@@ -123,23 +123,34 @@ def generate_frames():
     
     logger.info("🔍 Starting video feed generation...")
     
-    # Always try to open camera and show feed
+    # Show placeholder until monitoring starts
+    while not is_processing:
+        placeholder = create_placeholder_frame()
+        _, buffer = cv2.imencode('.jpg', placeholder)
+        frame_bytes = buffer.tobytes()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        time.sleep(0.5)  # Check every 0.5 seconds
+    
+    # Only open camera when monitoring starts
+    logger.info("🎬 Opening camera for monitoring...")
     cap = cv2.VideoCapture(0)  # Default camera
     
     if not cap.isOpened():
         logger.error("❌ Failed to open camera")
-        while True:
+        while is_processing:
             error_frame = create_error_frame("Camera not accessible")
             _, buffer = cv2.imencode('.jpg', error_frame)
             frame_bytes = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
             time.sleep(1)
+        return
     
     logger.info("✅ Camera opened successfully")
     
     try:
-        while True:
+        while is_processing:
             ret, frame = cap.read()
             if not ret:
                 logger.warning("⚠️ Failed to read frame from camera")
@@ -147,8 +158,8 @@ def generate_frames():
             
             logger.debug("📹 Frame captured from camera")
             
-            # Process frame if monitoring is active
-            if vehicle_counter is not None and is_processing:
+            # Process frame with AI detection
+            if vehicle_counter is not None:
                 try:
                     processed_frame, stats = vehicle_counter.process_frame_for_web(frame)
                     logger.debug("🔍 Frame processed for web display")
@@ -159,7 +170,7 @@ def generate_frames():
             else:
                 # Show raw camera feed with overlay text
                 processed_frame = frame.copy()
-                cv2.putText(processed_frame, "Camera Active - Start Monitoring for AI Detection", 
+                cv2.putText(processed_frame, "AI Detection Active", 
                            (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                 cv2.putText(processed_frame, f"Time: {datetime.now().strftime('%H:%M:%S')}", 
                            (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
@@ -176,6 +187,15 @@ def generate_frames():
     finally:
         cap.release()
         logger.info("📹 Camera released")
+        
+        # Show placeholder again when monitoring stops
+        while True:
+            placeholder = create_placeholder_frame()
+            _, buffer = cv2.imencode('.jpg', placeholder)
+            frame_bytes = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+            time.sleep(0.5)
 
 @app.route('/')
 def index():
