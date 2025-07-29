@@ -1,0 +1,26 @@
+🚗 Starting AI Vehicle Monitoring System...
+==================================================
+✅ System initialized successfully!
+🌐 Starting web dashboard...
+📍 URL: http://localhost:8080
+⏹️  Press Ctrl+C to stop
+--------------------------------------------------
+ * Serving Flask app 'web_dashboard'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:18:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET /video_feed HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET /socket.io/?EIO=4&transport=polling&t=PXKWp6u HTTP/1.1" 200 -
+INFO:web_dashboard:Client connected
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "POST /socket.io/?EIO=4&transport=polling&t=PXKWp7Y&sid=4Zmvf7NgIQh8U9RtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET /socket.io/?EIO=4&transport=polling&t=PXKWp7Z&sid=4Zmvf7NgIQh8U9RtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET /api/hourly_summary?days=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:19:00] "GET /socket.io/?EIO=4&transport=polling&t=PXKWp8N&sid=4Zmvf7NgIQh8U9RtAAAA HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:24:00] "GET /api/hourly_summary?days=1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Jul/2025 10:29:00] "GET /api/hourly_summary?days=1 HTTP/1.1" 200 -
