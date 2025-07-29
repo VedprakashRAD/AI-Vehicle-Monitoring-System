@@ -11,6 +11,60 @@ import numpy as np
 from vehicle_counter import VehicleCounter
 import logging
 
+def create_placeholder_frame():
+    """Create a placeholder frame when no monitoring is active"""
+    frame = np.zeros((480, 640, 3), dtype=np.uint8)
+    frame[:] = (50, 50, 50)  # Dark gray background
+    
+    # Add text
+    text = "Click 'Start Monitoring' to begin"
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.8
+    color = (255, 255, 255)
+    thickness = 2
+    
+    text_size = cv2.getTextSize(text, font, font_scale, thickness)[0]
+    x = (frame.shape[1] - text_size[0]) // 2
+    y = (frame.shape[0] + text_size[1]) // 2
+    
+    cv2.putText(frame, text, (x, y), font, font_scale, color, thickness)
+    return frame
+
+def create_error_frame(error_message):
+    """Create an error frame with message"""
+    frame = np.zeros((480, 640, 3), dtype=np.uint8)
+    frame[:] = (40, 40, 80)  # Dark blue background
+    
+    # Add error text
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.6
+    color = (100, 100, 255)
+    thickness = 2
+    
+    # Split long messages into multiple lines
+    words = error_message.split(' ')
+    lines = []
+    current_line = ""
+    
+    for word in words:
+        if len(current_line + word) < 35:
+            current_line += word + " "
+        else:
+            lines.append(current_line.strip())
+            current_line = word + " "
+    if current_line:
+        lines.append(current_line.strip())
+    
+    # Draw each line
+    y_start = frame.shape[0] // 2 - (len(lines) * 25) // 2
+    for i, line in enumerate(lines):
+        text_size = cv2.getTextSize(line, font, font_scale, thickness)[0]
+        x = (frame.shape[1] - text_size[0]) // 2
+        y = y_start + i * 30
+        cv2.putText(frame, line, (x, y), font, font_scale, color, thickness)
+    
+    return frame
+
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -67,39 +121,61 @@ def generate_frames():
     """Generate video frames for streaming"""
     global vehicle_counter, current_frame
     
-    if vehicle_counter is None:
-        return
-        
+    logger.info("🔍 Starting video feed generation...")
+    
+    # Always try to open camera and show feed
     cap = cv2.VideoCapture(0)  # Default camera
+    
+    if not cap.isOpened():
+        logger.error("❌ Failed to open camera")
+        while True:
+            error_frame = create_error_frame("Camera not accessible")
+            _, buffer = cv2.imencode('.jpg', error_frame)
+            frame_bytes = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+            time.sleep(1)
+    
+    logger.info("✅ Camera opened successfully")
     
     try:
         while True:
-            if not is_processing:
-                break
-                
             ret, frame = cap.read()
             if not ret:
-                break
+                logger.warning("⚠️ Failed to read frame from camera")
+                continue
             
-            # Process frame
-            processed_frame, stats = vehicle_counter.process_frame_for_web(frame)
+            logger.debug("📹 Frame captured from camera")
             
-            # Encode frame as JPEG
-            _, buffer = cv2.imencode('.jpg', processed_frame)
+            # Process frame if monitoring is active
+            if vehicle_counter is not None and is_processing:
+                try:
+                    processed_frame, stats = vehicle_counter.process_frame_for_web(frame)
+                    logger.debug("🔍 Frame processed for web display")
+                    socketio.emit('stats_update', stats)
+                except Exception as e:
+                    logger.error(f"❌ Error processing frame: {e}")
+                    processed_frame = frame
+            else:
+                # Show raw camera feed with overlay text
+                processed_frame = frame.copy()
+                cv2.putText(processed_frame, "Camera Active - Start Monitoring for AI Detection", 
+                           (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                cv2.putText(processed_frame, f"Time: {datetime.now().strftime('%H:%M:%S')}", 
+                           (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+            
+            _, buffer = cv2.imencode('.jpg', processed_frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
             frame_bytes = buffer.tobytes()
-            
-            # Emit stats via WebSocket
-            socketio.emit('stats_update', stats)
             
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
             
             time.sleep(0.033)  # ~30 FPS
-            
     except Exception as e:
-        logger.error(f"Error in frame generation: {e}")
+        logger.error(f"❌ Error in frame generation: {e}")
     finally:
         cap.release()
+        logger.info("📹 Camera released")
 
 @app.route('/')
 def index():
