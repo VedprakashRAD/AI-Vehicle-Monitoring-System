@@ -1,0 +1,86 @@
+2025-07-29 16:34:46,717 - __main__ - INFO - EasyOCR initialized successfully
+2025-07-29 16:34:46,835 - __main__ - INFO - YOLOv8 model loaded successfully
+2025-07-29 16:34:46,836 - __main__ - INFO - Starting World-Class Vehicle Monitoring System
+2025-07-29 16:34:46,836 - __main__ - INFO - Dashboard available at: http://localhost:8080
+2025-07-29 16:34:46,836 - __main__ - INFO - Features: Advanced tracking, License plate recognition, CSV export
+2025-07-29 16:35:16,368 - __main__ - INFO - EasyOCR initialized successfully
+2025-07-29 16:35:16,492 - __main__ - INFO - YOLOv8 model loaded successfully
+2025-07-29 16:35:16,493 - __main__ - INFO - Starting World-Class Vehicle Monitoring System
+2025-07-29 16:35:16,493 - __main__ - INFO - Dashboard available at: http://localhost:8081
+2025-07-29 16:35:16,494 - __main__ - INFO - Features: Advanced tracking, License plate recognition, CSV export
+2025-07-29 16:35:16,500 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8081
+ * Running on http://10.1.2.53:8081
+2025-07-29 16:35:16,500 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:36:12,713 - werkzeug - ERROR - 127.0.0.1 - - [29/Jul/2025 16:36:12] code 400, message Bad request syntax ("\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x87ÕN\xadWÎüÏX]~\x95°':ÿ\x84;\x87õØ\x0f\x8dÏèpøIöÙÅ\x17 ")
+2025-07-29 16:36:12,713 - werkzeug - ERROR - 127.0.0.1 - - [29/Jul/2025 16:36:12] code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063êê\x00\x00\x003\x04ï\x04í')
+2025-07-29 16:36:12,714 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:36:12] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x87ÕN­WÎüÏX]~\x95°':ÿ\x84;\x87õØ\x0f\x8dÏèpøIöÙÅ\x17 [0m" 400 -
+2025-07-29 16:36:12,714 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:36:12] "[31m[1m\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03\x9e.ÇäÅaÎ»¬¥µþµv\x92\x02y\x9a5\x08?8²\x81ë¿NsÉ>ÇÍ I\x1b®ÖÞ *(Ïã\x11\x88<\x08?>Þ¼^4Ö\x86ö®\x91\x15\x15$\x1e)\x05\x9e\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063êê\x00\x00\x003\x04ï\x04í[0m" 400 -
+2025-07-29 16:36:12,716 - werkzeug - ERROR - 127.0.0.1 - - [29/Jul/2025 16:36:12] code 400, message Bad request version ('\x18Ä}È~^ë\x13Þ«(ÙTìÿL')
+2025-07-29 16:36:12,718 - werkzeug - ERROR - 127.0.0.1 - - [29/Jul/2025 16:36:12] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00+\x00\x07\x06ªª\x03\x04\x03\x03\x00#\x00\x00\x00')
+2025-07-29 16:36:12,718 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:36:12] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03C¡tUð¹ëÍ\x85o%®;\x05\x82\x95\x0cÜ\x1a¾´\x94*ªà&\\B­Ë]¶ \x1cU\x042ü\x94XÛ´'\x98¤\x83\x92*`tÔ\x94I?Ç\x17¬w\x9fm\x9eg\x1cv\x17\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s\x9a\x9a\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x1b\x00\x03\x02\x00\x02þ\x0d\x00ú\x00\x00\x01\x00\x01¾\x00 ÒÓ\x8dÒUY\x93UÞþ8ás\x82¶\x88Ë=<\x9e#Ú\x88Ë°\x0f¶d×\x83~{\x00ÐÆ\x00;¥É(´\x03äS\x17?×ÖC\x98½ßÔóHIìýýúý"^Ò\x07ÕH\x92æEï®U}ÈËã¨Á\x9diÆ\x1e\x9døÕ\x83\x7fî\x8b¯aþ\x80`\x00\x1e\x18Ä}È~^ë\x13Þ«(ÙTìÿL[0m" 400 -
+2025-07-29 16:36:12,718 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:36:12] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x9dwZi\x11\x851\x11\x0bUòG\x7f>êJ°\x8fÂFõ"\x8eÏÝ\x13×\x8f\x9dP\x89K üÕ\x85ß\x06yÑ¤\x01égr×GM\x0bÄ{¸\x16e\x0eóØ\x90ü¬En\x8c@|\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sªª\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00+\x00\x07\x06ªª\x03\x04\x03\x03\x00#\x00\x00\x00[0m" 400 -
+2025-07-29 16:40:45,081 - __main__ - INFO - EasyOCR initialized successfully
+2025-07-29 16:40:45,205 - __main__ - INFO - YOLOv8 model loaded successfully
+2025-07-29 16:40:45,205 - __main__ - INFO - Starting World-Class Vehicle Monitoring System
+2025-07-29 16:40:45,206 - __main__ - INFO - Dashboard available at: http://localhost:8081
+2025-07-29 16:40:45,206 - __main__ - INFO - Features: Advanced tracking, License plate recognition, CSV export
+2025-07-29 16:40:45,211 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8081
+ * Running on http://10.1.2.53:8081
+2025-07-29 16:40:45,211 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:41:01,051 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:01] "GET / HTTP/1.1" 200 -
+2025-07-29 16:41:01,276 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:01,430 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-29 16:41:29,133 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:29] "POST /api/start_monitoring HTTP/1.1" 200 -
+2025-07-29 16:41:29,141 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:29] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:31,293 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:31] "GET /video_feed?1753787489135 HTTP/1.1" 200 -
+2025-07-29 16:41:32,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:32] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:35,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:35] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:38,137 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:38] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:41,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:41] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:42,317 - __main__ - INFO - Vehicle 1 exited
+2025-07-29 16:41:42,320 - __main__ - INFO - Saved record for vehicle 1
+2025-07-29 16:41:43,180 - __main__ - INFO - Vehicle 1 entered
+2025-07-29 16:41:44,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:44] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:47,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:47] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:50,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:50] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:53,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:53] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:56,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:56] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:41:59,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:41:59] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:02,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:02] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:05,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:05] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:08,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:11,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:11] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:14,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:14] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:17,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:17] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:20,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:20] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:23,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:23] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:26,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:26] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:29,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:29] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:32,140 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:32] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:35,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:35] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:38,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:38] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:41,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:41] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:44,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:44] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:47,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:47] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:50,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:50] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:53,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:53] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:56,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:56] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:42:59,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:42:59] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:02,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:02] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:05,137 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:05] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:08,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:08] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:11,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:11] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:14,138 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:14] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:43:16,262 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:16] "POST /api/stop_monitoring HTTP/1.1" 200 -
+2025-07-29 16:43:18,866 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:18] "GET /api/export_csv HTTP/1.1" 200 -
+2025-07-29 16:43:31,280 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:43:31] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:44:01,279 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:44:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:44:31,278 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:44:31] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:45:01,281 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:45:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:45:31,278 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:45:31] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:46:01,281 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:46:01] "GET /api/stats HTTP/1.1" 200 -
+2025-07-29 16:46:31,280 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 16:46:31] "GET /api/stats HTTP/1.1" 200 -

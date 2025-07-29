@@ -1,0 +1,50 @@
+/* Light Theme CSS */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    background: white;
+    color: #333;
+}
+
+.header {
+    color: #333;
+}
+
+.video-panel, .stats-panel, .controls-panel, .chart-panel, .export-section {
+    background: white;
+    color: #333;
+}
+
+.stat-value {
+    color: #667eea;
+}
+
+.control-group label {
+    color: #555;
+}
+
+.control-group input, .control-group select {
+    background: white;
+    color: #333;
+    border: 2px solid #ddd;
+}
+
+.stat-item {
+    border-bottom: 1px solid #eee;
+}
+
+/* Light Theme */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+}
+.container {
+    background: white;
+}
+.chart-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

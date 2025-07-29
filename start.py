@@ -1,71 +1,56 @@
 #!/usr/bin/env python3
 """
-Easy startup script for AI Vehicle Monitoring System
+Quick Start Script for AI-Powered Vehicle Monitoring System
 """
 
-import os
 import sys
-import webbrowser
-import time
-from threading import Timer
+import os
+import logging
 
-def open_browser():
-    """Open browser after a short delay"""
-    print("🌐 Opening web browser...")
-    webbrowser.open('http://localhost:8080')
+# Add src to path
+sys.path.append('src')
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 def main():
-    print("🚗 AI Vehicle Monitoring System")
-    print("================================")
-    
-    # Check if we're in virtual environment
-    if hasattr(sys, 'real_prefix') or (hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix):
-        print("✅ Virtual environment detected")
-    else:
-        print("⚠️  Warning: Not in virtual environment")
-        print("   Consider running: source venv/bin/activate")
-    
-    # Check if required files exist
-    required_files = ['web_dashboard.py', 'vehicle_counter.py', 'config.py']
-    missing_files = [f for f in required_files if not os.path.exists(f)]
-    
-    if missing_files:
-        print(f"❌ Missing files: {', '.join(missing_files)}")
-        return False
-    
-    print("✅ All required files found")
-    
-    # Test imports
+    """Quick start function"""
     try:
-        import flask
-        import ultralytics
-        import cv2
-        print("✅ Core modules available")
-    except ImportError as e:
-        print(f"❌ Missing module: {e}")
-        print("   Run: pip install -r requirements.txt")
-        return False
-    
-    print("\n🚀 Starting web dashboard...")
-    print("   URL: http://localhost:8080")
-    print("   Press Ctrl+C to stop")
-    print("-" * 40)
-    
-    # Open browser after 3 seconds
-    Timer(3.0, open_browser).start()
-    
-    # Import and run the web dashboard
-    try:
-        from web_dashboard import app, socketio
-        socketio.run(app, host='0.0.0.0', port=8080, debug=False)
+        print("🚗 AI-Powered Vehicle Monitoring System - Quick Start")
+        print("=" * 60)
+        
+        # Import dashboard
+        from web.dashboard import VehicleDashboard
+        
+        # Create and run dashboard
+        dashboard = VehicleDashboard(
+            host='127.0.0.1',
+            port=8080,
+            debug=False
+        )
+        
+        print("🚀 Starting dashboard on http://127.0.0.1:8080")
+        print("🔄 Press Ctrl+C to stop")
+        print("\nFeatures:")
+        print("   • AI vehicle detection with YOLOv8")
+        print("   • Real-time counting and tracking")
+        print("   • Entry/exit logging")
+        print("   • Live video feed")
+        print("   • Web dashboard interface")
+        print("=" * 60)
+        
+        dashboard.run()
+        
     except KeyboardInterrupt:
-        print("\n\n👋 Shutting down...")
+        print("\n\n🛑 System stopped")
+        
     except Exception as e:
-        print(f"\n❌ Error starting web dashboard: {e}")
-        return False
-    
-    return True
+        print(f"\n❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)
+    main()

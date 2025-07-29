@@ -1,0 +1,84 @@
+/* Dark Theme CSS */
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.container {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    color: #e0e0e0;
+}
+
+.video-panel, .stats-panel, .controls-panel, .chart-panel, .export-section {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.stat-value {
+    color: #8a9bff;
+}
+
+.control-group label {
+    color: #ccc;
+}
+
+.control-group input, .control-group select {
+    background: #404040;
+    color: #e0e0e0;
+    border: 2px solid #555;
+}
+
+.stat-item {
+    border-bottom: 1px solid #444;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6352a0 100%);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #d65959 0%, #c44822 100%);
+}
+
+/* Dark Theme */
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+.container {
+    background: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+.chart-container {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+h1, h3 {
+    color: #ffffff;
+}
+.video-panel, .stats-panel, .controls-panel, .chart-panel, .export-section {
+    background: #2d2d2d !important;
+    color: #ffffff;
+}
+.stat-item {
+    border-bottom: 1px solid #444 !important;
+}
+.control-group label {
+    color: #ffffff !important;
+}
+.control-group input, .control-group select {
+    background: #3d3d3d;
+    color: #ffffff;
+    border: 2px solid #555;
+}
+.header {
+    color: #ffffff !important;
+}
+.header h1 {
+    color: #ffffff !important;
+}

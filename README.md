@@ -120,11 +120,14 @@ python vehicle_counter.py --output counted_vehicles.mp4
 ### 2. Web Dashboard
 
 ```bash
-# Start the web dashboard
-python web_dashboard.py
+# Option 1: Full-featured dashboard with options
+python run_dashboard.py
+
+# Option 2: Quick start (simple)
+python start.py
 ```
 
-Then open your browser and navigate to: `http://localhost:5000`
+Then open your browser and navigate to: `http://127.0.0.1:8080`
 
 ### 3. Configuration
 

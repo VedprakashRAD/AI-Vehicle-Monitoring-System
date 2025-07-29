@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Vehicle Monitoring System</title>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <title>AI Vehicle Monitoring - Enhanced Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <link id="theme-css" rel="stylesheet" href="">
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            background-color: #f4f4f9;
         }
         
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .chart-container {
+            margin-top: 30px;
+        }
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .theme-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .theme-btn:hover {
+            background: #0056b3;
+        }
+        .theme-btn.active {
+            background: #28a745;
         }
         
         .header {
@@ -205,6 +233,13 @@
     </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <div class="theme-switcher">
+        <button id="themeToggle" class="theme-btn" onclick="toggleTheme()" title="Toggle Light/Dark Theme">
+            <i id="themeIcon" class="fas fa-moon"></i>
+        </button>
+    </div>
+    
     <div class="container">
         <div class="header">
             <h1>🚗 AI Vehicle Monitoring System</h1>
@@ -215,8 +250,8 @@
             <div class="video-panel">
                 <h3>Live Video Feed</h3>
                 <div class="video-container">
-                    <img id="videoFeed" src="/video_feed" alt="Video Feed" style="display: none;">
-                    <div id="videoPlaceholder" style="display: flex; align-items: center; justify-content: center; height: 100%; color: #666;">
+                    <img id="videoFeed" src="/video_feed" alt="Video Feed" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                    <div id="videoPlaceholder" style="display: none; align-items: center; justify-content: center; height: 100%; color: #666; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #000;">
                         Click "Start Monitoring" to begin video feed
                     </div>
                 </div>
@@ -370,7 +405,7 @@
             const lastUpdated = new Date(data.timestamp).toLocaleTimeString();
             document.getElementById('lastUpdated').textContent = lastUpdated;
             
-            // Update type chart
+            // Update type chart with animation
             if (typeChart) {
                 typeChart.data.datasets[0].data = [
                     data.vehicle_counts.car || 0,
@@ -378,7 +413,23 @@
                     data.vehicle_counts.bus || 0,
                     data.vehicle_counts.truck || 0
                 ];
-                typeChart.update();
+                typeChart.update('active');
+            }
+            
+            // Add current count to time chart if monitoring
+            if (timeChart && isMonitoring) {
+                const now = new Date().toLocaleTimeString();
+                const totalCount = data.total_count || 0;
+                
+                // Keep only last 20 data points
+                if (timeChart.data.labels.length >= 20) {
+                    timeChart.data.labels.shift();
+                    timeChart.data.datasets[0].data.shift();
+                }
+                
+                timeChart.data.labels.push(now);
+                timeChart.data.datasets[0].data.push(totalCount);
+                timeChart.update('none'); // Update without animation for real-time
             }
         }
         
@@ -450,8 +501,59 @@
             });
         }
         
+        // Theme toggle functionality
+        let currentTheme = 'light';
+        
+        function toggleTheme() {
+            const themeCSS = document.getElementById('theme-css');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeButton = document.getElementById('themeToggle');
+            
+            if (currentTheme === 'light') {
+                // Switch to dark
+                currentTheme = 'dark';
+                themeCSS.href = '/static/css/dark.css';
+                themeIcon.className = 'fas fa-sun';
+                themeButton.title = 'Switch to Light Theme';
+                themeButton.classList.add('active');
+            } else {
+                // Switch to light
+                currentTheme = 'light';
+                themeCSS.href = '/static/css/light.css';
+                themeIcon.className = 'fas fa-moon';
+                themeButton.title = 'Switch to Dark Theme';
+                themeButton.classList.remove('active');
+            }
+            
+            // Save theme preference
+            localStorage.setItem('selectedTheme', currentTheme);
+        }
+        
+        // Load saved theme preference
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'light';
+            const themeCSS = document.getElementById('theme-css');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeButton = document.getElementById('themeToggle');
+            
+            currentTheme = savedTheme;
+            
+            if (currentTheme === 'dark') {
+                themeCSS.href = '/static/css/dark.css';
+                themeIcon.className = 'fas fa-sun';
+                themeButton.title = 'Switch to Light Theme';
+                themeButton.classList.add('active');
+            } else {
+                themeCSS.href = '/static/css/light.css';
+                themeIcon.className = 'fas fa-moon';
+                themeButton.title = 'Switch to Dark Theme';
+                themeButton.classList.remove('active');
+            }
+        }
+        
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            loadSavedTheme(); // Load theme first
             initCharts();
             loadHistoricalData();
             
