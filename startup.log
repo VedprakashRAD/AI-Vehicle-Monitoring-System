@@ -1,0 +1,440 @@
+2025-07-29 12:42:36,273 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 12:42:36,273 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 12:42:36,273 - __main__ - INFO - Checking system dependencies...
+2025-07-29 12:42:36,396 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 12:42:36,396 - __main__ - INFO - ✓ numpy is available
+2025-07-29 12:42:37,165 - __main__ - INFO - ✓ torch is available
+2025-07-29 12:42:37,250 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 12:42:37,303 - __main__ - INFO - ✓ flask is available
+2025-07-29 12:42:37,459 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 12:42:37,492 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 12:42:37,497 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 12:42:37,497 - __main__ - INFO - ✓ redis is available
+2025-07-29 12:42:37,497 - __main__ - INFO - ✓ yaml is available
+2025-07-29 12:42:37,504 - __main__ - INFO - ✓ psutil is available
+2025-07-29 12:42:37,504 - __main__ - INFO - ✓ websockets is available
+2025-07-29 12:42:37,561 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 12:42:38,469 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 12:42:38,469 - __main__ - INFO - ✓ pandas is available
+2025-07-29 12:42:38,469 - __main__ - INFO - ✓ scipy is available
+2025-07-29 12:42:38,627 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 12:42:38,627 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 12:42:39,629 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 12:42:39,630 - __main__ - INFO - Checking system requirements...
+2025-07-29 12:42:39,631 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 12:42:39,631 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 12:42:40,412 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 12:42:41,475 - __main__ - INFO - Running: Setting up directories
+2025-07-29 12:42:41,476 - __main__ - INFO - Setting up directories...
+2025-07-29 12:42:41,476 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 12:42:41,476 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 12:42:41,477 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 12:42:41,477 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 12:42:41,477 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 12:42:41,477 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 12:42:41,477 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 12:42:41,478 - __main__ - ERROR - Failed at step: Setting up directories
+2025-07-29 12:42:41,478 - __main__ - INFO - Stopping all processes...
+2025-07-29 12:43:41,333 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 12:43:41,333 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 12:43:41,333 - __main__ - INFO - Checking system dependencies...
+2025-07-29 12:43:41,383 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 12:43:41,383 - __main__ - INFO - ✓ numpy is available
+2025-07-29 12:43:41,785 - __main__ - INFO - ✓ torch is available
+2025-07-29 12:43:41,829 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 12:43:41,855 - __main__ - INFO - ✓ flask is available
+2025-07-29 12:43:41,945 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 12:43:41,963 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 12:43:41,965 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 12:43:41,965 - __main__ - INFO - ✓ redis is available
+2025-07-29 12:43:41,965 - __main__ - INFO - ✓ yaml is available
+2025-07-29 12:43:41,970 - __main__ - INFO - ✓ psutil is available
+2025-07-29 12:43:41,970 - __main__ - INFO - ✓ websockets is available
+2025-07-29 12:43:42,002 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 12:43:42,649 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 12:43:42,649 - __main__ - INFO - ✓ pandas is available
+2025-07-29 12:43:42,649 - __main__ - INFO - ✓ scipy is available
+2025-07-29 12:43:42,694 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 12:43:42,694 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 12:43:43,697 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 12:43:43,698 - __main__ - INFO - Checking system requirements...
+2025-07-29 12:43:43,698 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 12:43:43,699 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 12:43:44,487 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 12:43:45,567 - __main__ - INFO - Running: Setting up directories
+2025-07-29 12:43:45,567 - __main__ - INFO - Setting up directories...
+2025-07-29 12:43:45,568 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 12:43:45,569 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 12:43:45,569 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 12:43:45,569 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 12:43:45,570 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 12:43:45,570 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 12:43:45,570 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 12:43:46,574 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 12:43:46,574 - __main__ - INFO - Checking AI models...
+2025-07-29 12:43:46,574 - __main__ - INFO - Downloading YOLOv8 model...
+2025-07-29 12:43:54,732 - __main__ - INFO - ✓ YOLOv8 model downloaded successfully
+2025-07-29 12:43:55,742 - __main__ - INFO - Running: Initializing database
+2025-07-29 12:43:55,742 - __main__ - INFO - Initializing database...
+2025-07-29 12:43:55,800 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 12:43:56,806 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 12:43:56,806 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 12:43:56,831 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 12:43:56,832 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 12:43:56,832 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 12:46:13,031 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 12:46:13,031 - __main__ - INFO - Stopping all processes...
+2025-07-29 12:46:13,050 - __main__ - INFO - ✓ Process stopped successfully
+2025-07-29 12:46:13,050 - __main__ - INFO - Stopping all processes...
+2025-07-29 12:46:13,050 - __main__ - INFO - ✓ Process stopped successfully
+2025-07-29 14:34:51,738 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 14:34:51,739 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 14:34:51,739 - __main__ - INFO - Checking system dependencies...
+2025-07-29 14:34:51,862 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 14:34:51,862 - __main__ - INFO - ✓ numpy is available
+2025-07-29 14:34:52,574 - __main__ - INFO - ✓ torch is available
+2025-07-29 14:34:52,654 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 14:34:52,703 - __main__ - INFO - ✓ flask is available
+2025-07-29 14:34:52,849 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 14:34:52,879 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 14:34:52,884 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 14:34:52,884 - __main__ - INFO - ✓ redis is available
+2025-07-29 14:34:52,884 - __main__ - INFO - ✓ yaml is available
+2025-07-29 14:34:52,890 - __main__ - INFO - ✓ psutil is available
+2025-07-29 14:34:52,891 - __main__ - INFO - ✓ websockets is available
+2025-07-29 14:34:52,942 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 14:34:53,782 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 14:34:53,782 - __main__ - INFO - ✓ pandas is available
+2025-07-29 14:34:53,782 - __main__ - INFO - ✓ scipy is available
+2025-07-29 14:34:53,836 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 14:34:53,837 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 14:34:54,842 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 14:34:54,842 - __main__ - INFO - Checking system requirements...
+2025-07-29 14:34:54,843 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 14:34:54,843 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 14:34:56,147 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 14:34:57,204 - __main__ - INFO - Running: Setting up directories
+2025-07-29 14:34:57,204 - __main__ - INFO - Setting up directories...
+2025-07-29 14:34:57,204 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 14:34:57,205 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 14:34:57,205 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 14:34:57,205 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 14:34:57,205 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 14:34:57,205 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 14:34:57,206 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 14:34:58,207 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 14:34:58,208 - __main__ - INFO - Checking AI models...
+2025-07-29 14:34:58,208 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 14:34:59,210 - __main__ - INFO - Running: Initializing database
+2025-07-29 14:34:59,211 - __main__ - INFO - Initializing database...
+2025-07-29 14:34:59,264 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 14:35:00,269 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 14:35:00,269 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 14:35:00,292 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 14:35:00,292 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 14:35:00,292 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 14:36:11,598 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 14:36:11,599 - __main__ - INFO - Stopping all processes...
+2025-07-29 14:36:11,670 - __main__ - INFO - ✓ Process stopped successfully
+2025-07-29 14:36:11,671 - __main__ - INFO - Stopping all processes...
+2025-07-29 14:36:11,671 - __main__ - INFO - ✓ Process stopped successfully
+2025-07-29 14:54:40,202 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 14:54:40,202 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 14:54:40,202 - __main__ - INFO - Checking system dependencies...
+2025-07-29 14:54:40,328 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 14:54:40,328 - __main__ - INFO - ✓ numpy is available
+2025-07-29 14:54:41,041 - __main__ - INFO - ✓ torch is available
+2025-07-29 14:54:41,136 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 14:54:41,187 - __main__ - INFO - ✓ flask is available
+2025-07-29 14:54:41,345 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 14:54:41,377 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 14:54:41,382 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 14:54:41,382 - __main__ - INFO - ✓ redis is available
+2025-07-29 14:54:41,382 - __main__ - INFO - ✓ yaml is available
+2025-07-29 14:54:41,388 - __main__ - INFO - ✓ psutil is available
+2025-07-29 14:54:41,389 - __main__ - INFO - ✓ websockets is available
+2025-07-29 14:54:41,442 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 14:54:42,365 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 14:54:42,365 - __main__ - INFO - ✓ pandas is available
+2025-07-29 14:54:42,365 - __main__ - INFO - ✓ scipy is available
+2025-07-29 14:54:42,424 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 14:54:42,424 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 14:54:43,427 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 14:54:43,427 - __main__ - INFO - Checking system requirements...
+2025-07-29 14:54:43,428 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 14:54:43,428 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 14:54:44,151 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 14:54:45,215 - __main__ - INFO - Running: Setting up directories
+2025-07-29 14:54:45,215 - __main__ - INFO - Setting up directories...
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 14:54:45,216 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 14:54:46,216 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 14:54:46,216 - __main__ - INFO - Checking AI models...
+2025-07-29 14:54:46,216 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 14:54:47,219 - __main__ - INFO - Running: Initializing database
+2025-07-29 14:54:47,219 - __main__ - INFO - Initializing database...
+2025-07-29 14:54:47,271 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 14:54:48,275 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 14:54:48,275 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 14:54:48,305 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 14:54:48,305 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 14:54:48,305 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 14:54:50,310 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 14:55:02,449 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 14:55:02,449 - __main__ - INFO - Stopping all processes...
+2025-07-29 14:55:02,449 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:15:44,762 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 15:15:44,762 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 15:15:44,762 - __main__ - INFO - Checking system dependencies...
+2025-07-29 15:15:44,895 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 15:15:44,895 - __main__ - INFO - ✓ numpy is available
+2025-07-29 15:15:45,588 - __main__ - INFO - ✓ torch is available
+2025-07-29 15:15:45,667 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 15:15:45,716 - __main__ - INFO - ✓ flask is available
+2025-07-29 15:15:45,864 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 15:15:45,895 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 15:15:45,900 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 15:15:45,900 - __main__ - INFO - ✓ redis is available
+2025-07-29 15:15:45,900 - __main__ - INFO - ✓ yaml is available
+2025-07-29 15:15:45,906 - __main__ - INFO - ✓ psutil is available
+2025-07-29 15:15:45,907 - __main__ - INFO - ✓ websockets is available
+2025-07-29 15:15:45,961 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 15:15:46,811 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 15:15:46,812 - __main__ - INFO - ✓ pandas is available
+2025-07-29 15:15:46,812 - __main__ - INFO - ✓ scipy is available
+2025-07-29 15:15:46,867 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 15:15:46,867 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 15:15:47,867 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 15:15:47,868 - __main__ - INFO - Checking system requirements...
+2025-07-29 15:15:47,868 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 15:15:47,869 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 15:15:48,692 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 15:15:49,759 - __main__ - INFO - Running: Setting up directories
+2025-07-29 15:15:49,760 - __main__ - INFO - Setting up directories...
+2025-07-29 15:15:49,760 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 15:15:49,761 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 15:15:49,761 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 15:15:49,762 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 15:15:49,762 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 15:15:49,762 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 15:15:49,762 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 15:15:50,768 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 15:15:50,768 - __main__ - INFO - Checking AI models...
+2025-07-29 15:15:50,768 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 15:15:51,774 - __main__ - INFO - Running: Initializing database
+2025-07-29 15:15:51,774 - __main__ - INFO - Initializing database...
+2025-07-29 15:15:51,825 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 15:15:52,830 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 15:15:52,830 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 15:15:52,859 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 15:15:52,859 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 15:15:52,859 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 15:15:54,870 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 15:16:01,703 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 15:16:01,703 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:16:01,703 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:17:42,715 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 15:17:42,715 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 15:17:42,715 - __main__ - INFO - Checking system dependencies...
+2025-07-29 15:17:42,818 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 15:17:42,818 - __main__ - INFO - ✓ numpy is available
+2025-07-29 15:17:43,421 - __main__ - INFO - ✓ torch is available
+2025-07-29 15:17:43,490 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 15:17:43,531 - __main__ - INFO - ✓ flask is available
+2025-07-29 15:17:43,659 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 15:17:43,684 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 15:17:43,688 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 15:17:43,688 - __main__ - INFO - ✓ redis is available
+2025-07-29 15:17:43,688 - __main__ - INFO - ✓ yaml is available
+2025-07-29 15:17:43,694 - __main__ - INFO - ✓ psutil is available
+2025-07-29 15:17:43,695 - __main__ - INFO - ✓ websockets is available
+2025-07-29 15:17:43,740 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 15:17:44,533 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 15:17:44,533 - __main__ - INFO - ✓ pandas is available
+2025-07-29 15:17:44,533 - __main__ - INFO - ✓ scipy is available
+2025-07-29 15:17:44,581 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 15:17:44,581 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 15:17:45,585 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 15:17:45,585 - __main__ - INFO - Checking system requirements...
+2025-07-29 15:17:45,586 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 15:17:45,586 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 15:17:46,317 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 15:17:47,396 - __main__ - INFO - Running: Setting up directories
+2025-07-29 15:17:47,397 - __main__ - INFO - Setting up directories...
+2025-07-29 15:17:47,397 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 15:17:47,397 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 15:17:47,398 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 15:17:47,398 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 15:17:47,398 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 15:17:47,398 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 15:17:47,398 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 15:17:48,400 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 15:17:48,400 - __main__ - INFO - Checking AI models...
+2025-07-29 15:17:48,401 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 15:17:49,403 - __main__ - INFO - Running: Initializing database
+2025-07-29 15:17:49,404 - __main__ - INFO - Initializing database...
+2025-07-29 15:17:49,459 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 15:17:50,464 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 15:17:50,464 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 15:17:50,488 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 15:17:50,488 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 15:17:50,489 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 15:17:52,499 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 15:18:01,479 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 15:18:01,479 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:18:01,479 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:19:07,932 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 15:19:07,933 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 15:19:07,933 - __main__ - INFO - Checking system dependencies...
+2025-07-29 15:19:07,985 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 15:19:07,985 - __main__ - INFO - ✓ numpy is available
+2025-07-29 15:19:08,389 - __main__ - INFO - ✓ torch is available
+2025-07-29 15:19:08,429 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 15:19:08,454 - __main__ - INFO - ✓ flask is available
+2025-07-29 15:19:08,544 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 15:19:08,560 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 15:19:08,563 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 15:19:08,564 - __main__ - INFO - ✓ redis is available
+2025-07-29 15:19:08,564 - __main__ - INFO - ✓ yaml is available
+2025-07-29 15:19:08,568 - __main__ - INFO - ✓ psutil is available
+2025-07-29 15:19:08,569 - __main__ - INFO - ✓ websockets is available
+2025-07-29 15:19:08,600 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 15:19:09,215 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 15:19:09,215 - __main__ - INFO - ✓ pandas is available
+2025-07-29 15:19:09,215 - __main__ - INFO - ✓ scipy is available
+2025-07-29 15:19:09,248 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 15:19:09,248 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 15:19:10,249 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 15:19:10,249 - __main__ - INFO - Checking system requirements...
+2025-07-29 15:19:10,250 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 15:19:10,250 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 15:19:10,983 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 15:19:12,039 - __main__ - INFO - Running: Setting up directories
+2025-07-29 15:19:12,039 - __main__ - INFO - Setting up directories...
+2025-07-29 15:19:12,039 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 15:19:12,039 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 15:19:12,039 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 15:19:12,039 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 15:19:12,040 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 15:19:12,040 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 15:19:12,040 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 15:19:13,045 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 15:19:13,045 - __main__ - INFO - Checking AI models...
+2025-07-29 15:19:13,045 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 15:19:14,045 - __main__ - INFO - Running: Initializing database
+2025-07-29 15:19:14,046 - __main__ - INFO - Initializing database...
+2025-07-29 15:19:14,105 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 15:19:15,110 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 15:19:15,111 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 15:19:15,144 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 15:19:15,144 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 15:19:15,144 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 15:19:17,154 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 15:20:40,848 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 15:20:40,849 - __main__ - INFO - Stopping all processes...
+2025-07-29 15:20:40,849 - __main__ - INFO - Stopping all processes...
+2025-07-29 16:01:14,397 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 16:01:14,397 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 16:01:14,397 - __main__ - INFO - Checking system dependencies...
+2025-07-29 16:01:14,461 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 16:01:14,461 - __main__ - INFO - ✓ numpy is available
+2025-07-29 16:01:15,047 - __main__ - INFO - ✓ torch is available
+2025-07-29 16:01:15,133 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 16:01:15,175 - __main__ - INFO - ✓ flask is available
+2025-07-29 16:01:15,306 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 16:01:15,335 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 16:01:15,340 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 16:01:15,340 - __main__ - INFO - ✓ redis is available
+2025-07-29 16:01:15,340 - __main__ - INFO - ✓ yaml is available
+2025-07-29 16:01:15,346 - __main__ - INFO - ✓ psutil is available
+2025-07-29 16:01:15,347 - __main__ - INFO - ✓ websockets is available
+2025-07-29 16:01:15,400 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 16:01:16,234 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 16:01:16,234 - __main__ - INFO - ✓ pandas is available
+2025-07-29 16:01:16,234 - __main__ - INFO - ✓ scipy is available
+2025-07-29 16:01:16,293 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 16:01:16,293 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 16:01:17,297 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 16:01:17,298 - __main__ - INFO - Checking system requirements...
+2025-07-29 16:01:17,298 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 16:01:17,298 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 16:01:18,047 - __main__ - INFO - ✓ Default camera is available
+2025-07-29 16:01:19,112 - __main__ - INFO - Running: Setting up directories
+2025-07-29 16:01:19,113 - __main__ - INFO - Setting up directories...
+2025-07-29 16:01:19,113 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 16:01:19,114 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 16:01:19,114 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 16:01:19,115 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 16:01:19,115 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 16:01:19,116 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 16:01:19,116 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 16:01:20,116 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 16:01:20,116 - __main__ - INFO - Checking AI models...
+2025-07-29 16:01:20,117 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 16:01:21,118 - __main__ - INFO - Running: Initializing database
+2025-07-29 16:01:21,118 - __main__ - INFO - Initializing database...
+2025-07-29 16:01:21,170 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 16:01:22,176 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 16:01:22,176 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 16:01:22,199 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 16:01:22,199 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 16:01:22,199 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 16:01:24,206 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 16:02:27,626 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 16:02:27,626 - __main__ - INFO - Stopping all processes...
+2025-07-29 16:02:27,626 - __main__ - INFO - Stopping all processes...
+2025-07-29 16:10:52,418 - __main__ - INFO - Starting Advanced Vehicle Monitoring System...
+2025-07-29 16:10:52,419 - __main__ - INFO - Running: Checking dependencies
+2025-07-29 16:10:52,419 - __main__ - INFO - Checking system dependencies...
+2025-07-29 16:10:52,529 - __main__ - INFO - ✓ cv2 is available
+2025-07-29 16:10:52,529 - __main__ - INFO - ✓ numpy is available
+2025-07-29 16:10:53,215 - __main__ - INFO - ✓ torch is available
+2025-07-29 16:10:53,297 - __main__ - INFO - ✓ ultralytics is available
+2025-07-29 16:10:53,343 - __main__ - INFO - ✓ flask is available
+2025-07-29 16:10:53,482 - __main__ - INFO - ✓ flask_socketio is available
+2025-07-29 16:10:53,509 - __main__ - INFO - ✓ flask_restx is available
+2025-07-29 16:10:53,515 - __main__ - INFO - ✓ sqlite3 is available
+2025-07-29 16:10:53,515 - __main__ - INFO - ✓ redis is available
+2025-07-29 16:10:53,515 - __main__ - INFO - ✓ yaml is available
+2025-07-29 16:10:53,522 - __main__ - INFO - ✓ psutil is available
+2025-07-29 16:10:53,523 - __main__ - INFO - ✓ websockets is available
+2025-07-29 16:10:53,574 - __main__ - INFO - ✓ matplotlib is available
+2025-07-29 16:10:54,423 - __main__ - INFO - ✓ seaborn is available
+2025-07-29 16:10:54,423 - __main__ - INFO - ✓ pandas is available
+2025-07-29 16:10:54,423 - __main__ - INFO - ✓ scipy is available
+2025-07-29 16:10:54,481 - __main__ - INFO - ✓ scikit-learn is available
+2025-07-29 16:10:54,481 - __main__ - INFO - All dependencies are satisfied
+2025-07-29 16:10:55,486 - __main__ - INFO - Running: Checking system requirements
+2025-07-29 16:10:55,487 - __main__ - INFO - Checking system requirements...
+2025-07-29 16:10:55,487 - __main__ - INFO - ✓ Python version: 3.12.9 | packaged by Anaconda, Inc. | (main, Feb  6 2025, 12:55:12) [Clang 14.0.6 ]
+2025-07-29 16:10:55,487 - __main__ - INFO - ✓ Available RAM: 24.0 GB
+2025-07-29 16:10:55,634 - __main__ - WARNING - ⚠ No camera detected. System will run in demo mode.
+2025-07-29 16:10:56,637 - __main__ - INFO - Running: Setting up directories
+2025-07-29 16:10:56,638 - __main__ - INFO - Setting up directories...
+2025-07-29 16:10:56,638 - __main__ - INFO - ✓ Created directory: logs
+2025-07-29 16:10:56,638 - __main__ - INFO - ✓ Created directory: models
+2025-07-29 16:10:56,638 - __main__ - INFO - ✓ Created directory: data
+2025-07-29 16:10:56,639 - __main__ - INFO - ✓ Created directory: exports
+2025-07-29 16:10:56,639 - __main__ - INFO - ✓ Created directory: static/css
+2025-07-29 16:10:56,639 - __main__ - INFO - ✓ Created directory: static/js
+2025-07-29 16:10:56,639 - __main__ - INFO - ✓ Created directory: static/images
+2025-07-29 16:10:57,644 - __main__ - INFO - Running: Downloading AI models
+2025-07-29 16:10:57,644 - __main__ - INFO - Checking AI models...
+2025-07-29 16:10:57,644 - __main__ - INFO - ✓ YOLOv8 model already available
+2025-07-29 16:10:58,650 - __main__ - INFO - Running: Initializing database
+2025-07-29 16:10:58,650 - __main__ - INFO - Initializing database...
+2025-07-29 16:10:58,701 - __main__ - INFO - ✓ Database initialized successfully
+2025-07-29 16:10:59,704 - __main__ - INFO - Running: Starting web dashboard
+2025-07-29 16:10:59,705 - __main__ - INFO - Starting advanced web dashboard...
+2025-07-29 16:10:59,722 - __main__ - INFO - ✓ Advanced web dashboard started successfully
+2025-07-29 16:10:59,722 - __main__ - INFO - 🌐 Dashboard available at: http://localhost:8080
+2025-07-29 16:10:59,722 - __main__ - INFO - 📊 API documentation at: http://localhost:8080/api/docs/
+2025-07-29 16:11:01,730 - __main__ - WARNING - A process has stopped unexpectedly
+2025-07-29 16:12:02,130 - __main__ - INFO - Received shutdown signal. Stopping system...
+2025-07-29 16:12:02,130 - __main__ - INFO - Stopping all processes...
+2025-07-29 16:12:02,130 - __main__ - INFO - Stopping all processes...

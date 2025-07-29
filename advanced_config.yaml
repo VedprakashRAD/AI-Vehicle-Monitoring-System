@@ -1,0 +1,41 @@
+cameras:
+  - id: 'main_camera'
+    name: 'Main Entrance Camera'
+    source: 0  # Default webcam, change to RTSP URL for IP cameras
+    resolution: [1920, 1080]
+    fps: 30
+    zones:
+      speed_zone_1: [[100, 100], [500, 100], [500, 400], [100, 400]]
+      no_parking: [[600, 200], [800, 200], [800, 350], [600, 350]]
+
+models:
+  yolo_model: 'yolov8l.pt'
+  confidence_threshold: 0.3
+  iou_threshold: 0.5
+
+tracking:
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+
+analytics:
+  enable_heatmaps: true
+  enable_trajectory_analysis: true
+  save_raw_detections: true
+
+alerts:
+  enable_speed_alerts: true
+  enable_violation_alerts: true
+  webhook_url: null
+
+database:
+  path: 'advanced_vehicle_monitoring.db'
+  backup_interval: 3600
+  max_records: 1000000
+  cleanup_older_than: 180
+
+performance:
+  processing_threads: 4
+  batch_size: 8
+  gpu_acceleration: true
+  half_precision: false

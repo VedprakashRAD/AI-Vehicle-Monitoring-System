@@ -9,6 +9,13 @@ import time
 from collections import defaultdict, deque
 import argparse
 import logging
+import easyocr
+import re
+from scipy.spatial.distance import cdist
+from filterpy.kalman import KalmanFilter
+import uuid
+import pickle
+import os
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -34,15 +41,22 @@ class VehicleCounter:
         self.class_names = {2: 'car', 3: 'motorcycle', 5: 'bus', 7: 'truck'}
         
         # Tracking variables
-        self.tracks = {}
-        self.next_id = 0
-        self.counted_ids = set()
-        self.vehicle_counts = defaultdict(int)
-        self.total_count = 0
-        
-        # For speed calculation
-        self.vehicle_speeds = {}
-        self.position_history = defaultdict(lambda: deque(maxlen=10))
+self.kalman_filters = {}
+self.tracks = {}
+self.next_id = uuid.uuid4  # Use UUID for unique IDs
+self.counted_ids = set()
+self.vehicle_counts = defaultdict(int)
+self.total_count = 0
+
+# EasyOCR reader
+self.reader = easyocr.Reader(['en'])  # Use with English character detection
+
+# For speed calculation
+self.vehicle_speeds = {}
+self.position_history = defaultdict(lambda: deque(maxlen=10))
+
+# Initialize license plate history to avoid duplicates
+self.license_plate_history = {}
         
         # Line coordinates for counting (will be set dynamically)
         self.counting_line = None
@@ -93,11 +107,26 @@ class VehicleCounter:
         conn.commit()
         conn.close()
         
-    def calculate_distance(self, p1, p2):
-        """Calculate Euclidean distance between two points"""
-        return np.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
-    
-    def calculate_speed(self, vehicle_id, current_pos, fps=30):
+def allocate_kalman_filter(self, object_id, initial_pos):
+    """ Allocate a new Kalman filter for object tracking """
+    kf = KalmanFilter(dim_x=4, dim_z=2)
+    kf.x = np.array([initial_pos[0], initial_pos[1], 0, 0])  # Initial state (location and velocity)
+    kf.F = np.array([[1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0], [0, 0, 0, 1]])  # State transition matrix
+    kf.H = np.array([[1, 0, 0, 0], [0, 1, 0, 0]])
+    kf.R *= 10  # Measurement uncertainty
+    kf.P *= 100  # Initial uncertainty
+    kf.Q *= 0.01  # Process noise
+    self.kalman_filters[object_id] = kf
+
+
+
+
+
+def calculate_distance(self, p1, p2):
+    """Calculate Euclidean distance between two points"""
+    return np.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
+
+def calculate_speed(self, vehicle_id, current_pos, fps=30):
         """Calculate vehicle speed in km/h"""
         if vehicle_id not in self.position_history:
             self.position_history[vehicle_id].append((current_pos, time.time()))
@@ -151,24 +180,32 @@ class VehicleCounter:
             min_distance = float('inf')
             closest_id = None
             
-            for track_id, (prev_x, prev_y, prev_cls) in self.tracks.items():
-                if prev_cls == cls:  # Same vehicle type
-                    distance = self.calculate_distance((center_x, center_y), (prev_x, prev_y))
-                    if distance < min_distance and distance < 100:  # Max tracking distance
-                        min_distance = distance
-                        closest_id = track_id
-            
-            if closest_id is not None:
-                # Update existing track
-                current_tracks[closest_id] = (center_x, center_y, cls)
-                
-                # Calculate speed
-                speed = self.calculate_speed(closest_id, (center_x, center_y))
-                self.vehicle_speeds[closest_id] = speed
-                
-            else:
-                # Create new track
-                current_tracks[self.next_id] = (center_x, center_y, cls)
+for track_id, (prev_x, prev_y, prev_cls) in self.tracks.items():
+    if prev_cls == cls:  # Same vehicle type
+        # Use Kalman filter for tracking
+        kf = self.kalman_filters.get(track_id)
+        if kf is not None:
+            kf.predict()
+            distance = np.linalg.norm(kf.x[:2] - np.array([center_x, center_y]))
+            if distance < min_distance and distance < 100:  # Improved max tracking distance
+                min_distance = distance
+                closest_id = track_id
+if closest_id is not None:
+    # Update existing track
+    current_tracks[closest_id] = (center_x, center_y, cls)
+
+    # Update Kalman filter with new position
+    kf = self.kalman_filters[closest_id]
+    kf.update(np.array([center_x, center_y]))
+
+    # Calculate speed
+    speed = self.calculate_speed(closest_id, (center_x, center_y))
+    self.vehicle_speeds[closest_id] = speed
+else:
+    # Create new track with Kalman filter
+    new_id = self.next_id()
+    self.kalman_filters[new_id] = self.allocate_kalman_filter(new_id, np.array([center_x, center_y]))
+    current_tracks[new_id] = (center_x, center_y, cls)
                 self.next_id += 1
         
         self.tracks = current_tracks
@@ -194,17 +231,35 @@ class VehicleCounter:
                     
                     logger.info(f"Vehicle {track_id} ({vehicle_type}) counted. Speed: {speed:.1f} km/h")
     
-    def draw_annotations(self, frame, detections):
-        """Draw bounding boxes, tracking info, and counting line"""
-        height, width = frame.shape[:2]
-        
-        # Draw counting line
-        if self.counting_line is None:
-            self.counting_line = int(height * self.line_position)
-        
-        cv2.line(frame, (0, self.counting_line), (width, self.counting_line), (0, 0, 255), 3)
-        cv2.putText(frame, 'COUNTING LINE', (10, self.counting_line - 10), 
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+def recognize_license_plate(self, frame, bbox):
+    """Recognize and return the license plate number from the bounding box"""
+    x1, y1, x2, y2 = bbox
+    license_plate_img = frame[y1:y2, x1:x2]
+    results = self.reader.readtext(license_plate_img)
+
+    plate_number = ""
+    for (_, text, _) in results:
+        plate_number += text
+
+    # Validate plate number (simple regex for a generic plate format)
+    if re.match(r'^[A-Z0-9]+$', plate_number):
+        return plate_number
+    return None
+
+
+
+
+def draw_annotations(self, frame, detections):
+    """Draw bounding boxes, tracking info, and counting line"""
+    height, width = frame.shape[:2]
+
+    # Draw counting line
+    if self.counting_line is None:
+        self.counting_line = int(height * self.line_position)
+
+    cv2.line(frame, (0, self.counting_line), (width, self.counting_line), (0, 0, 255), 3)
+    cv2.putText(frame, 'COUNTING LINE', (10, self.counting_line - 10), 
+               cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         
         # Draw detections
         for detection in detections:

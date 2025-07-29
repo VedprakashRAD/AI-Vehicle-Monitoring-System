@@ -8,7 +8,7 @@ import time
 from datetime import datetime, timedelta
 import base64
 import numpy as np
-from vehicle_counter import VehicleCounter
+from simple_vehicle_counter import SimpleVehicleCounter
 import logging
 
 def create_placeholder_frame():
@@ -79,43 +79,13 @@ current_frame = None
 processing_thread = None
 is_processing = False
 
-class WebVehicleCounter(VehicleCounter):
-    """Extended VehicleCounter for web dashboard"""
+class WebVehicleCounter(SimpleVehicleCounter):
+    """Extended SimpleVehicleCounter for web dashboard"""
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.current_frame = None
         self.latest_stats = {}
-        
-    def process_frame_for_web(self, frame):
-        """Process single frame and return annotated frame with stats"""
-        global current_frame
-        
-        # Run YOLO detection
-        results = self.model(frame, verbose=False)
-        detections = results[0].boxes
-        
-        if detections is not None:
-            # Track vehicles
-            self.track_vehicles(detections, frame.shape)
-            
-            # Check line crossing
-            self.check_line_crossing(frame.shape)
-            
-            # Draw annotations
-            frame = self.draw_annotations(frame, detections)
-        
-        # Update latest stats
-        self.latest_stats = {
-            'total_count': self.total_count,
-            'vehicle_counts': dict(self.vehicle_counts),
-            'timestamp': datetime.now().isoformat(),
-            'active_tracks': len(self.tracks)
-        }
-        
-        # Store current frame
-        current_frame = frame
-        return frame, self.latest_stats
 
 def generate_frames():
     """Generate video frames for streaming"""
@@ -257,7 +227,7 @@ def get_history():
         start_time = datetime.now() - timedelta(hours=hours)
         
         cursor.execute('''
-            SELECT timestamp, vehicle_type, speed
+            SELECT timestamp, vehicle_type, confidence
             FROM vehicle_counts 
             WHERE timestamp >= ?
             ORDER BY timestamp DESC
@@ -295,7 +265,7 @@ def get_hourly_summary():
                 strftime('%Y-%m-%d %H:00:00', timestamp) as hour,
                 vehicle_type,
                 COUNT(*) as count,
-                AVG(speed) as avg_speed
+                AVG(confidence) as avg_confidence
             FROM vehicle_counts 
             WHERE timestamp >= ?
             GROUP BY hour, vehicle_type
@@ -333,7 +303,7 @@ def export_data():
         cursor = conn.cursor()
         
         cursor.execute('''
-            SELECT timestamp, vehicle_type, speed, location
+            SELECT timestamp, vehicle_type, confidence
             FROM vehicle_counts 
             ORDER BY timestamp DESC
         ''')
@@ -342,9 +312,9 @@ def export_data():
         conn.close()
         
         # Create CSV content
-        csv_content = "Timestamp,Vehicle Type,Speed (km/h),Location\n"
-        for timestamp, vehicle_type, speed, location in results:
-            csv_content += f"{timestamp},{vehicle_type},{speed or 0},{location}\n"
+        csv_content = "Timestamp,Vehicle Type,Confidence\n"
+        for timestamp, vehicle_type, confidence in results:
+            csv_content += f"{timestamp},{vehicle_type},{confidence or 0}\n"
         
         return Response(
             csv_content,

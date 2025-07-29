@@ -1,0 +1,260 @@
+2025-07-29 12:37:48,283 - __main__ - INFO - Created sample configuration file: advanced_config.yaml
+2025-07-29 12:43:58,234 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:43:58,234 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:43:58,234 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:43:58,234 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:43:58,239 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:43:58,239 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:43:59,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-w0 HTTP/1.1" 200 -
+2025-07-29 12:43:59,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-v_ HTTP/1.1" 200 -
+2025-07-29 12:43:59,953 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:43:59,954 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:43:59,954 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "POST /socket.io/?EIO=4&transport=polling&t=PXL1-wB&sid=uoiYW27-98YttLW4AAAA HTTP/1.1" 200 -
+2025-07-29 12:43:59,955 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "POST /socket.io/?EIO=4&transport=polling&t=PXL1-wB&sid=Seh0Phvx2rImt2kLAAAB HTTP/1.1" 200 -
+2025-07-29 12:43:59,956 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-wC&sid=uoiYW27-98YttLW4AAAA HTTP/1.1" 200 -
+2025-07-29 12:43:59,957 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-wD&sid=Seh0Phvx2rImt2kLAAAB HTTP/1.1" 200 -
+2025-07-29 12:43:59,960 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-wN&sid=uoiYW27-98YttLW4AAAA HTTP/1.1" 200 -
+2025-07-29 12:43:59,968 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:43:59] "GET /socket.io/?EIO=4&transport=polling&t=PXL1-wO&sid=Seh0Phvx2rImt2kLAAAB HTTP/1.1" 200 -
+2025-07-29 12:44:01,142 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:01] "GET /socket.io/?EIO=4&transport=polling&t=PXL1_Cn HTTP/1.1" 200 -
+2025-07-29 12:44:01,153 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:44:01,153 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:01] "POST /socket.io/?EIO=4&transport=polling&t=PXL1_Cv&sid=sYHUhuzO51ypax8BAAAE HTTP/1.1" 200 -
+2025-07-29 12:44:01,155 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:01] "GET /socket.io/?EIO=4&transport=polling&t=PXL1_Cx&sid=sYHUhuzO51ypax8BAAAE HTTP/1.1" 200 -
+2025-07-29 12:44:01,158 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:01] "GET /socket.io/?EIO=4&transport=polling&t=PXL1_D5&sid=sYHUhuzO51ypax8BAAAE HTTP/1.1" 200 -
+2025-07-29 12:44:02,942 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:02] "GET /socket.io/?EIO=4&transport=polling&t=PXL1_et HTTP/1.1" 200 -
+2025-07-29 12:44:02,948 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:44:02,949 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:02] "POST /socket.io/?EIO=4&transport=polling&t=PXL1_f0&sid=SG3m9gWte05xVTRsAAAG HTTP/1.1" 200 -
+2025-07-29 12:44:02,949 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:44:02] "GET /socket.io/?EIO=4&transport=polling&t=PXL1_f1&sid=SG3m9gWte05xVTRsAAAG HTTP/1.1" 200 -
+2025-07-29 12:46:02,438 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:02] "[33mGET /api/hourly_summary?days=1 HTTP/1.1[0m" 404 -
+2025-07-29 12:46:02,771 - __main__ - INFO - Client disconnected from WebSocket
+2025-07-29 12:46:02,771 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:02] "GET /socket.io/?EIO=4&transport=websocket&sid=sYHUhuzO51ypax8BAAAE HTTP/1.1" 200 -
+2025-07-29 12:46:02,773 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:02] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:06,146 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:06] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:08,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:08] "[33mGET /api/hourly_summary?days=1 HTTP/1.1[0m" 404 -
+2025-07-29 12:46:40,619 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:46:40,620 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:46:40,620 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:46:40,620 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:46:40,624 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:46:40,624 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:46:43,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL2cyU HTTP/1.1" 200 -
+2025-07-29 12:46:43,949 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:46:43,951 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:43] "POST /socket.io/?EIO=4&transport=polling&t=PXL2cye&sid=--u1qdI4KQWMbCjOAAAA HTTP/1.1" 200 -
+2025-07-29 12:46:43,952 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL2cyf&sid=--u1qdI4KQWMbCjOAAAA HTTP/1.1" 200 -
+2025-07-29 12:46:45,121 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:45,938 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "GET /socket.io/?EIO=4&transport=polling&t=PXL2dRk HTTP/1.1" 200 -
+2025-07-29 12:46:45,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "GET /socket.io/?EIO=4&transport=polling&t=PXL2dRk HTTP/1.1" 200 -
+2025-07-29 12:46:45,945 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:46:45,946 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "POST /socket.io/?EIO=4&transport=polling&t=PXL2dRr&sid=OwLehPlnChwTf1vDAAAC HTTP/1.1" 200 -
+2025-07-29 12:46:45,948 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "GET /socket.io/?EIO=4&transport=polling&t=PXL2dRs&sid=OwLehPlnChwTf1vDAAAC HTTP/1.1" 200 -
+2025-07-29 12:46:45,949 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:46:45,950 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "POST /socket.io/?EIO=4&transport=polling&t=PXL2dRv&sid=EwVn7XCvL-gRIjRCAAAD HTTP/1.1" 200 -
+2025-07-29 12:46:45,951 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "GET /socket.io/?EIO=4&transport=polling&t=PXL2dRw&sid=EwVn7XCvL-gRIjRCAAAD HTTP/1.1" 200 -
+2025-07-29 12:46:45,960 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:45] "GET /socket.io/?EIO=4&transport=polling&t=PXL2dS1&sid=EwVn7XCvL-gRIjRCAAAD HTTP/1.1" 200 -
+2025-07-29 12:46:46,343 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:46] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:50,957 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:50] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:52,634 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:52] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:52,966 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:52] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:53,164 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:53] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:53,499 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:53] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:46:54,168 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:46:54] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:47:33,211 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:47:33,211 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:47:33,211 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:47:33,211 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:47:33,215 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:47:33,215 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:47:35,939 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:35] "GET /socket.io/?EIO=4&transport=polling&t=PXL2pe- HTTP/1.1" 200 -
+2025-07-29 12:47:35,947 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:47:35,948 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:35] "POST /socket.io/?EIO=4&transport=polling&t=PXL2pf6&sid=kkyHVKHG98HBxlFdAAAA HTTP/1.1" 200 -
+2025-07-29 12:47:35,949 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:35] "GET /socket.io/?EIO=4&transport=polling&t=PXL2pf7&sid=kkyHVKHG98HBxlFdAAAA HTTP/1.1" 200 -
+2025-07-29 12:47:35,952 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:35] "GET /socket.io/?EIO=4&transport=polling&t=PXL2pfF&sid=kkyHVKHG98HBxlFdAAAA HTTP/1.1" 200 -
+2025-07-29 12:47:36,938 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:36] "GET /socket.io/?EIO=4&transport=polling&t=PXL2puc HTTP/1.1" 200 -
+2025-07-29 12:47:36,943 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:47:36,943 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:36] "POST /socket.io/?EIO=4&transport=polling&t=PXL2pui&sid=R-4u5mKnLPikJrHlAAAC HTTP/1.1" 200 -
+2025-07-29 12:47:36,945 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:36] "GET /socket.io/?EIO=4&transport=polling&t=PXL2pui.0&sid=R-4u5mKnLPikJrHlAAAC HTTP/1.1" 200 -
+2025-07-29 12:47:38,938 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:38] "GET /socket.io/?EIO=4&transport=polling&t=PXL2qNs HTTP/1.1" 200 -
+2025-07-29 12:47:38,944 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:47:38,944 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:38] "POST /socket.io/?EIO=4&transport=polling&t=PXL2qNy&sid=wXeoGK38dMfeZwC6AAAE HTTP/1.1" 200 -
+2025-07-29 12:47:38,945 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:47:38] "GET /socket.io/?EIO=4&transport=polling&t=PXL2qNz&sid=wXeoGK38dMfeZwC6AAAE HTTP/1.1" 200 -
+2025-07-29 12:48:22,026 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:22] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:48:22,750 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:22] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:48:22,955 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:22] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:48:23,158 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:23] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:48:23,360 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:23] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:48:23,937 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:48:23] "[33mGET /api/hourly_summary?days=1 HTTP/1.1[0m" 404 -
+2025-07-29 12:50:41,418 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:50:41,418 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:50:41,418 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:50:41,418 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:50:41,423 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:50:41,423 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:50:42,763 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:42] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:42,937 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:42] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XIs HTTP/1.1" 200 -
+2025-07-29 12:50:42,942 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:50:42,945 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:42] "POST /socket.io/?EIO=4&transport=polling&t=PXL3XIw&sid=QH4QOB4NZSryfy0-AAAA HTTP/1.1" 200 -
+2025-07-29 12:50:42,945 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:42] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XIx&sid=QH4QOB4NZSryfy0-AAAA HTTP/1.1" 200 -
+2025-07-29 12:50:43,939 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XYT HTTP/1.1" 200 -
+2025-07-29 12:50:43,947 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XYT HTTP/1.1" 200 -
+2025-07-29 12:50:43,950 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:50:43,952 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "POST /socket.io/?EIO=4&transport=polling&t=PXL3XYd&sid=edEwcD55jQ6fm1rVAAAC HTTP/1.1" 200 -
+2025-07-29 12:50:43,952 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XYe&sid=edEwcD55jQ6fm1rVAAAC HTTP/1.1" 200 -
+2025-07-29 12:50:43,956 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:50:43,957 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "POST /socket.io/?EIO=4&transport=polling&t=PXL3XYo&sid=yNwW8hiYyiQLhayOAAAD HTTP/1.1" 200 -
+2025-07-29 12:50:43,957 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XYo.0&sid=yNwW8hiYyiQLhayOAAAD HTTP/1.1" 200 -
+2025-07-29 12:50:43,965 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:43] "GET /socket.io/?EIO=4&transport=polling&t=PXL3XYt&sid=yNwW8hiYyiQLhayOAAAD HTTP/1.1" 200 -
+2025-07-29 12:50:44,031 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:44] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:44,690 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:44] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:44,922 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:44] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:45,139 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:45] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:45,365 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:45] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:45,966 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:45] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:46,179 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:46] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:50:46,474 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:50:46] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:52:46,169 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:52:46,169 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:52:46,169 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:52:46,169 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:52:46,174 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:52:46,174 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:52:46,951 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:46] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_aY HTTP/1.1" 200 -
+2025-07-29 12:52:46,959 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:52:46,960 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:46] "POST /socket.io/?EIO=4&transport=polling&t=PXL3_af&sid=0hHP6-QLlgX6m2PHAAAA HTTP/1.1" 200 -
+2025-07-29 12:52:46,961 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:46] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_ag&sid=0hHP6-QLlgX6m2PHAAAA HTTP/1.1" 200 -
+2025-07-29 12:52:47,953 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_qB HTTP/1.1" 200 -
+2025-07-29 12:52:47,959 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_qB HTTP/1.1" 200 -
+2025-07-29 12:52:47,960 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:52:47,961 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "POST /socket.io/?EIO=4&transport=polling&t=PXL3_qL&sid=ACktIlE-kpJWHwmiAAAC HTTP/1.1" 200 -
+2025-07-29 12:52:47,963 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_qM&sid=ACktIlE-kpJWHwmiAAAC HTTP/1.1" 200 -
+2025-07-29 12:52:47,966 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:52:47,966 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "POST /socket.io/?EIO=4&transport=polling&t=PXL3_qS&sid=Agtr5A30lAzjKNvXAAAD HTTP/1.1" 200 -
+2025-07-29 12:52:47,967 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_qS.0&sid=Agtr5A30lAzjKNvXAAAD HTTP/1.1" 200 -
+2025-07-29 12:52:47,974 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:52:47] "GET /socket.io/?EIO=4&transport=polling&t=PXL3_qV&sid=Agtr5A30lAzjKNvXAAAD HTTP/1.1" 200 -
+2025-07-29 12:53:23,955 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:53:23] "[33mGET /api/hourly_summary?days=1 HTTP/1.1[0m" 404 -
+2025-07-29 12:53:39,243 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:53:39] "[33mGET / HTTP/1.1[0m" 404 -
+2025-07-29 12:54:20,345 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 12:54:20,345 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 12:54:20,345 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 12:54:20,345 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 12:54:20,350 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 12:54:20,350 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 12:54:23,955 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:23] "GET /socket.io/?EIO=4&transport=polling&t=PXL4NGC HTTP/1.1" 200 -
+2025-07-29 12:54:23,964 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:54:23,964 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:23] "POST /socket.io/?EIO=4&transport=polling&t=PXL4NGL&sid=par3q2kVd5ElO3MgAAAA HTTP/1.1" 200 -
+2025-07-29 12:54:23,965 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:23] "GET /socket.io/?EIO=4&transport=polling&t=PXL4NGM&sid=par3q2kVd5ElO3MgAAAA HTTP/1.1" 200 -
+2025-07-29 12:54:25,953 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "GET /socket.io/?EIO=4&transport=polling&t=PXL4NlS HTTP/1.1" 200 -
+2025-07-29 12:54:25,961 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "GET /socket.io/?EIO=4&transport=polling&t=PXL4NlS HTTP/1.1" 200 -
+2025-07-29 12:54:25,962 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:54:25,963 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "POST /socket.io/?EIO=4&transport=polling&t=PXL4NlZ&sid=CQPI54S5tqkmrvFSAAAC HTTP/1.1" 200 -
+2025-07-29 12:54:25,966 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:54:25,967 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "POST /socket.io/?EIO=4&transport=polling&t=PXL4Nli&sid=TCgAsyG-Gf_dwXhfAAAD HTTP/1.1" 200 -
+2025-07-29 12:54:25,968 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "GET /socket.io/?EIO=4&transport=polling&t=PXL4Nlj&sid=TCgAsyG-Gf_dwXhfAAAD HTTP/1.1" 200 -
+2025-07-29 12:54:25,969 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "GET /socket.io/?EIO=4&transport=polling&t=PXL4Nlk&sid=CQPI54S5tqkmrvFSAAAC HTTP/1.1" 200 -
+2025-07-29 12:54:25,980 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:25] "GET /socket.io/?EIO=4&transport=polling&t=PXL4Nlo&sid=CQPI54S5tqkmrvFSAAAC HTTP/1.1" 200 -
+2025-07-29 12:54:38,712 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:38] "GET / HTTP/1.1" 200 -
+2025-07-29 12:54:39,311 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:39] "GET /socket.io/?EIO=4&transport=polling&t=PXL4R0C HTTP/1.1" 200 -
+2025-07-29 12:54:39,351 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:39] "[33mGET /api/alerts/ HTTP/1.1[0m" 404 -
+2025-07-29 12:54:39,353 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 12:54:39,355 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:39] "POST /socket.io/?EIO=4&transport=polling&t=PXL4R0r&sid=vdvDIoZMl0g-UzCnAAAG HTTP/1.1" 200 -
+2025-07-29 12:54:39,356 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:39] "GET /socket.io/?EIO=4&transport=polling&t=PXL4R0s&sid=vdvDIoZMl0g-UzCnAAAG HTTP/1.1" 200 -
+2025-07-29 12:54:40,677 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:54:40] "GET /video_feed/main_camera HTTP/1.1" 200 -
+2025-07-29 12:55:09,352 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:55:09] "[33mGET /api/alerts/ HTTP/1.1[0m" 404 -
+2025-07-29 12:55:30,871 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:55:30] "[33mPOST /api/cameras/main_camera/start HTTP/1.1[0m" 404 -
+2025-07-29 12:55:39,355 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 12:55:39] "[33mGET /api/alerts/ HTTP/1.1[0m" 404 -
+2025-07-29 13:03:17,062 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 13:03:17,062 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 13:03:17,062 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 13:03:17,063 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 13:03:17,067 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 13:03:17,067 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 13:03:17,954 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:17] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Pdz HTTP/1.1" 200 -
+2025-07-29 13:03:17,963 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 13:03:17,964 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:17] "POST /socket.io/?EIO=4&transport=polling&t=PXL6Pe5&sid=dNd86iGPUVktZSzmAAAA HTTP/1.1" 200 -
+2025-07-29 13:03:17,965 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:17] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Pe7&sid=dNd86iGPUVktZSzmAAAA HTTP/1.1" 200 -
+2025-07-29 13:03:18,954 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:18] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Ptb HTTP/1.1" 200 -
+2025-07-29 13:03:18,961 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 13:03:18,962 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:18] "POST /socket.io/?EIO=4&transport=polling&t=PXL6Ptj&sid=UdJG0bqTqBZPcVcbAAAC HTTP/1.1" 200 -
+2025-07-29 13:03:18,964 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:18] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Ptl&sid=UdJG0bqTqBZPcVcbAAAC HTTP/1.1" 200 -
+2025-07-29 13:03:21,209 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "GET /socket.io/?EIO=4&transport=polling&t=PXL6QQr HTTP/1.1" 200 -
+2025-07-29 13:03:21,216 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 13:03:21,217 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "POST /socket.io/?EIO=4&transport=polling&t=PXL6QQx&sid=k5qxslXpa4Br87aIAAAE HTTP/1.1" 200 -
+2025-07-29 13:03:21,217 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "GET /socket.io/?EIO=4&transport=polling&t=PXL6QQy&sid=k5qxslXpa4Br87aIAAAE HTTP/1.1" 200 -
+2025-07-29 13:03:21,221 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "GET /socket.io/?EIO=4&transport=polling&t=PXL6QR3&sid=k5qxslXpa4Br87aIAAAE HTTP/1.1" 200 -
+2025-07-29 13:03:21,954 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "GET /socket.io/?EIO=4&transport=polling&t=PXL6QcT HTTP/1.1" 200 -
+2025-07-29 13:03:21,960 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 13:03:21,962 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "POST /socket.io/?EIO=4&transport=polling&t=PXL6Qcb&sid=C0aIqr9_OUb43E33AAAG HTTP/1.1" 200 -
+2025-07-29 13:03:21,963 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:21] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Qcc&sid=C0aIqr9_OUb43E33AAAG HTTP/1.1" 200 -
+2025-07-29 13:03:31,314 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "GET / HTTP/1.1" 200 -
+2025-07-29 13:03:31,317 - __main__ - INFO - Client disconnected from WebSocket
+2025-07-29 13:03:31,317 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "GET /socket.io/?EIO=4&transport=websocket&sid=k5qxslXpa4Br87aIAAAE HTTP/1.1" 200 -
+2025-07-29 13:03:31,327 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Su- HTTP/1.1" 200 -
+2025-07-29 13:03:31,338 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 13:03:31,338 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "POST /socket.io/?EIO=4&transport=polling&t=PXL6Sv8&sid=JHkLJbmizXFHtsXhAAAI HTTP/1.1" 200 -
+2025-07-29 13:03:31,339 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "GET /socket.io/?EIO=4&transport=polling&t=PXL6Sv9&sid=JHkLJbmizXFHtsXhAAAI HTTP/1.1" 200 -
+2025-07-29 13:03:31,340 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:31] "GET /api/alerts/ HTTP/1.1" 200 -
+2025-07-29 13:03:33,167 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:33] "GET /video_feed/main_camera HTTP/1.1" 200 -
+2025-07-29 13:03:46,915 - advanced_system - INFO - Advanced vehicle monitoring system stopped
+2025-07-29 13:03:46,916 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:46] "POST /api/cameras/main_camera/stop HTTP/1.1" 200 -
+2025-07-29 13:03:51,241 - advanced_system - INFO - Advanced vehicle monitoring system stopped
+2025-07-29 13:03:51,241 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:51] "POST /api/cameras/main_camera/stop HTTP/1.1" 200 -
+2025-07-29 13:03:53,071 - advanced_system - INFO - Started monitoring camera: Main Entrance Camera
+2025-07-29 13:03:53,105 - advanced_system - INFO - Advanced vehicle monitoring system started
+2025-07-29 13:03:53,110 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:53] "POST /api/cameras/main_camera/start HTTP/1.1" 200 -
+2025-07-29 13:03:55,274 - advanced_system - INFO - Stopped processing camera: Main Entrance Camera
+2025-07-29 13:03:55,274 - advanced_system - INFO - Advanced vehicle monitoring system stopped
+2025-07-29 13:03:55,275 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 13:03:55] "POST /api/cameras/main_camera/stop HTTP/1.1" 200 -
+2025-07-29 14:35:01,750 - advanced_system - INFO - Loaded YOLO model: yolov8l.pt
+2025-07-29 14:35:01,751 - advanced_system - INFO - Added camera: Main Entrance Camera (main_camera)
+2025-07-29 14:35:01,751 - __main__ - INFO - Advanced monitoring system initialized successfully
+2025-07-29 14:35:01,751 - __main__ - INFO - Starting advanced vehicle monitoring web dashboard
+2025-07-29 14:35:01,756 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.1.2.53:8080
+2025-07-29 14:35:01,756 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 14:35:03,186 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET / HTTP/1.1" 200 -
+2025-07-29 14:35:03,203 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPhW HTTP/1.1" 200 -
+2025-07-29 14:35:03,233 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /api/alerts/ HTTP/1.1" 200 -
+2025-07-29 14:35:03,239 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 14:35:03,239 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "POST /socket.io/?EIO=4&transport=polling&t=PXLRPi5&sid=-rbHmj61DAArU1ZXAAAA HTTP/1.1" 200 -
+2025-07-29 14:35:03,240 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPi6&sid=-rbHmj61DAArU1ZXAAAA HTTP/1.1" 200 -
+2025-07-29 14:35:03,242 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPi9&sid=-rbHmj61DAArU1ZXAAAA HTTP/1.1" 200 -
+2025-07-29 14:35:03,606 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnq HTTP/1.1" 200 -
+2025-07-29 14:35:03,607 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnq HTTP/1.1" 200 -
+2025-07-29 14:35:03,608 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 14:35:03,608 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "POST /socket.io/?EIO=4&transport=polling&t=PXLRPns&sid=d3ctVn5TyetiuoH_AAAC HTTP/1.1" 200 -
+2025-07-29 14:35:03,609 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnt&sid=d3ctVn5TyetiuoH_AAAC HTTP/1.1" 200 -
+2025-07-29 14:35:03,610 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnq HTTP/1.1" 200 -
+2025-07-29 14:35:03,611 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 14:35:03,612 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "POST /socket.io/?EIO=4&transport=polling&t=PXLRPnv&sid=rLyXRu0M9AuVFMgOAAAD HTTP/1.1" 200 -
+2025-07-29 14:35:03,612 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnw&sid=rLyXRu0M9AuVFMgOAAAD HTTP/1.1" 200 -
+2025-07-29 14:35:03,613 - __main__ - INFO - Client connected to WebSocket
+2025-07-29 14:35:03,613 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "POST /socket.io/?EIO=4&transport=polling&t=PXLRPny&sid=ZRp-8MEtr0ru_8IgAAAF HTTP/1.1" 200 -
+2025-07-29 14:35:03,613 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPny.0&sid=ZRp-8MEtr0ru_8IgAAAF HTTP/1.1" 200 -
+2025-07-29 14:35:03,621 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPnz&sid=rLyXRu0M9AuVFMgOAAAD HTTP/1.1" 200 -
+2025-07-29 14:35:03,632 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:03] "GET /socket.io/?EIO=4&transport=polling&t=PXLRPn-&sid=ZRp-8MEtr0ru_8IgAAAF HTTP/1.1" 200 -
+2025-07-29 14:35:05,146 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:05] "GET /video_feed/main_camera HTTP/1.1" 200 -
+2025-07-29 14:35:33,235 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:35:33] "GET /api/alerts/ HTTP/1.1" 200 -
+2025-07-29 14:36:03,234 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:36:03] "GET /api/alerts/ HTTP/1.1" 200 -
+2025-07-29 14:36:06,176 - advanced_system - INFO - Advanced vehicle monitoring system stopped
+2025-07-29 14:36:06,177 - werkzeug - INFO - 127.0.0.1 - - [29/Jul/2025 14:36:06] "POST /api/cameras/main_camera/stop HTTP/1.1" 200 -
