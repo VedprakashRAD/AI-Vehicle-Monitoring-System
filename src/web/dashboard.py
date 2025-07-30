@@ -9,6 +9,7 @@ import cv2
 import threading
 import time
 import numpy as np
+import json
 from datetime import datetime
 import logging
 
@@ -18,8 +19,17 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from core.vehicle_counter import WebVehicleCounter
 from database.manager import DatabaseManager
+from utils.system_monitor import system_monitor
+from utils.anomaly_detector import anomaly_detector
 
 logger = logging.getLogger(__name__)
+
+
+def json_serializer(obj):
+    """JSON serializer for objects not serializable by default json code"""
+    if isinstance(obj, datetime):
+        return obj.isoformat()
+    raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
 
 
 class VehicleDashboard:
@@ -111,6 +121,18 @@ class VehicleDashboard:
             else:
                 return jsonify({'error': 'Unsupported format'}), 400
         
+        @self.app.route('/api/system_health')
+        def get_system_health():
+            return jsonify(system_monitor.get_metrics())
+        
+        @self.app.route('/api/anomalies')
+        def get_anomalies():
+            return jsonify({
+                'active_anomalies': anomaly_detector.get_active_anomalies(),
+                'recent_anomalies': anomaly_detector.get_recent_anomalies(10),
+                'summary': anomaly_detector.get_anomaly_summary()
+            })
+
         @self.app.route('/start_monitoring', methods=['POST'])
         def start_monitoring():
             try:
@@ -197,6 +219,16 @@ class VehicleDashboard:
                 if self.vehicle_counter is not None:
                     try:
                         processed_frame, stats = self.vehicle_counter.process_frame_for_web(frame)
+                        
+                        # Update anomaly detector with latest stats
+                        anomaly_detector.update_traffic_data(stats)
+                        
+                        # Add anomaly data to stats
+                        stats['anomalies'] = json.loads(json.dumps({
+                            'active': anomaly_detector.get_active_anomalies(),
+                            'summary': anomaly_detector.get_anomaly_summary()
+                        }, default=json_serializer))
+                        
                         self.socketio.emit('stats_update', stats)
                     except Exception as e:
                         logger.error(f"❌ Error processing frame: {e}")
@@ -274,6 +306,7 @@ class VehicleDashboard:
     
     def run(self):
         """Run the dashboard application"""
+        system_monitor.start_monitoring()
         logger.info("Starting Vehicle Monitoring Web Dashboard...")
         logger.info(f"Access the dashboard at: http://{self.host}:{self.port}")
         

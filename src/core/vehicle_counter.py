@@ -11,6 +11,34 @@ import uuid
 import math
 from collections import defaultdict, deque
 
+# Kalman Filter for tracking
+class KalmanFilter:
+    def __init__(self, dt=1, u_x=0, u_y=0, std_acc=1, x_std_meas=0.1, y_std_meas=0.1):
+        self.dt = dt
+        self.u = np.array([[u_x], [u_y]])
+        self.A = np.array([[1, self.dt, 0, 0], [0, 1, 0, 0], [0, 0, 1, self.dt], [0, 0, 0, 1]])
+        self.B = np.array([[(self.dt**2)/2, 0], [self.dt, 0], [0, (self.dt**2)/2], [0, self.dt]])
+        self.H = np.array([[1, 0, 0, 0], [0, 0, 1, 0]])
+        self.Q = np.array([[(self.dt**4)/4, (self.dt**3)/2, 0, 0],
+                           [(self.dt**3)/2, self.dt**2, 0, 0],
+                           [0, 0, (self.dt**4)/4, (self.dt**3)/2],
+                           [0, 0, (self.dt**3)/2, self.dt**2]]) * std_acc**2
+        self.R = np.array([[x_std_meas**2, 0], [0, y_std_meas**2]])
+        self.P = np.eye(self.A.shape[1])
+        self.x = np.zeros((self.A.shape[1], 1))
+
+    def predict(self):
+        self.x = np.dot(self.A, self.x) + np.dot(self.B, self.u)
+        self.P = np.dot(np.dot(self.A, self.P), self.A.T) + self.Q
+        return self.x
+
+    def update(self, z):
+        S = np.dot(self.H, np.dot(self.P, self.H.T)) + self.R
+        K = np.dot(np.dot(self.P, self.H.T), np.linalg.inv(S))
+        self.x = self.x + np.dot(K, (z - np.dot(self.H, self.x)))
+        self.P = self.P - np.dot(np.dot(K, self.H), self.P)
+        return self.x
+
 try:
     from ultralytics import YOLO
 except ImportError:
@@ -28,12 +56,17 @@ class VehicleTracker:
         self.bbox = bbox
         self.vehicle_type = vehicle_type
         self.confidence = confidence
-        self.positions = deque(maxlen=10)  # Store last 10 positions
+        self.positions = deque(maxlen=20)  # Increased for better trajectory
+        self.kf = KalmanFilter()  # Initialize Kalman Filter
         self.entry_time = datetime.now()
         self.exit_time = None
         self.has_crossed_line = False
         self.speed = 0.0
         self.frames_since_update = 0
+        
+        # Initialize Kalman Filter with first detection
+        self.kf.x[0] = bbox[0] + bbox[2] / 2
+        self.kf.x[2] = bbox[1] + bbox[3] / 2
         
         # Add initial position
         center_x = bbox[0] + bbox[2] // 2
@@ -46,10 +79,13 @@ class VehicleTracker:
         self.confidence = confidence
         self.frames_since_update = 0
         
-        # Add new position
-        center_x = bbox[0] + bbox[2] // 2
-        center_y = bbox[1] + bbox[3] // 2
-        self.positions.append((center_x, center_y))
+        # Update Kalman Filter
+        center_x = bbox[0] + bbox[2] / 2
+        center_y = bbox[1] + bbox[3] / 2
+        self.kf.update(np.array([[center_x], [center_y]]))
+        
+        # Update position history with corrected value
+        self.positions.append((self.kf.x[0,0], self.kf.x[2,0]))
         
         # Calculate speed if we have multiple positions
         if len(self.positions) >= 2:
@@ -78,6 +114,11 @@ class VehicleTracker:
     def is_expired(self, max_frames=30):
         """Check if tracker should be removed due to inactivity"""
         return self.frames_since_update > max_frames
+    
+    def predict_next_position(self):
+        """Predict next position with Kalman Filter"""
+        predicted_x = self.kf.predict()
+        return (predicted_x[0,0], predicted_x[2,0])
     
     def increment_frames_since_update(self):
         """Increment frames since last update"""
@@ -141,7 +182,11 @@ class VehicleCounter:
             # Run YOLO detection
             detections = self._detect_vehicles(frame)
             
-            # Update trackers
+            # Predict tracker positions
+            for tracker in self.trackers.values():
+                tracker.predict_next_position()
+
+            # Update trackers with new detections
             self._update_trackers(detections)
             
             # Draw annotations
@@ -224,28 +269,21 @@ class VehicleCounter:
             vehicle_type = detection['vehicle_type']
             confidence = detection['confidence']
             
-            # Find closest tracker
+            # Find closest tracker by predicted position
             best_tracker_id = None
-            min_distance = float('inf')
-            
-            center_x = bbox[0] + bbox[2] // 2
-            center_y = bbox[1] + bbox[3] // 2
-            
+            min_distance = 100  # Increased distance threshold
+
+            center_x = detection['bbox'][0] + detection['bbox'][2] / 2
+            center_y = detection['bbox'][1] + detection['bbox'][3] / 2
+
             for tracker_id, tracker in self.trackers.items():
-                if tracker_id in matched_trackers:
+                if tracker.vehicle_type != vehicle_type or tracker_id in matched_trackers:
                     continue
-                
-                # Calculate distance to tracker
-                tracker_center_x = tracker.bbox[0] + tracker.bbox[2] // 2
-                tracker_center_y = tracker.bbox[1] + tracker.bbox[3] // 2
-                
-                distance = math.sqrt(
-                    (center_x - tracker_center_x)**2 + 
-                    (center_y - tracker_center_y)**2
-                )
-                
-                # Only match if distance is reasonable and same vehicle type
-                if distance < 100 and tracker.vehicle_type == vehicle_type and distance < min_distance:
+
+                predicted_pos = tracker.predict_next_position()
+                distance = math.sqrt((predicted_pos[0] - center_x)**2 + (predicted_pos[1] - center_y)**2)
+
+                if distance < min_distance:
                     min_distance = distance
                     best_tracker_id = tracker_id
             
