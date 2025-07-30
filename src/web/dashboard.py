@@ -56,6 +56,7 @@ class VehicleDashboard:
         # Application state
         self.vehicle_counter = None
         self.is_processing = False
+        self.camera_source = 0  # Default camera source
         
         # Setup routes and events
         self._setup_routes()
@@ -66,10 +67,7 @@ class VehicleDashboard:
         
         @self.app.route('/')
         def index():
-            # Check if config indicates to use world-class template
-            if self.config.get('dashboard', {}).get('use_world_class', False):
-                return render_template('world_class_advanced.html')
-            return render_template('index.html')
+            return render_template('world_class_advanced.html')
         
         @self.app.route('/world-class')
         def world_class():
@@ -133,11 +131,18 @@ class VehicleDashboard:
                 'summary': anomaly_detector.get_anomaly_summary()
             })
 
+        @self.app.route('/api/entry_exit_log')
+        def get_entry_exit_log():
+            if self.vehicle_counter:
+                return jsonify(self.vehicle_counter.get_entry_exit_details())
+            return jsonify([])
+
         @self.app.route('/start_monitoring', methods=['POST'])
         def start_monitoring():
             try:
                 data = request.get_json()
                 source = data.get('source', 0)
+                self.camera_source = source  # Set camera source
                 confidence = float(data.get('confidence', 0.5))
                 
                 self.vehicle_counter = WebVehicleCounter(confidence_threshold=confidence)
@@ -193,7 +198,10 @@ class VehicleDashboard:
         
         # Start camera processing
         logger.info("🎬 Opening camera for monitoring...")
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(self.camera_source if str(self.camera_source).isdigit() else self.camera_source)
+        if not cap.isOpened():
+            # Try to open test video if camera fails
+            cap = cv2.VideoCapture("test_video.mp4")
         
         if not cap.isOpened():
             logger.error("❌ Failed to open camera")
@@ -310,4 +318,4 @@ class VehicleDashboard:
         logger.info("Starting Vehicle Monitoring Web Dashboard...")
         logger.info(f"Access the dashboard at: http://{self.host}:{self.port}")
         
-        self.socketio.run(self.app, host=self.host, port=self.port, debug=self.debug)
+        self.socketio.run(self.app, host=self.host, port=self.port, debug=self.debug, allow_unsafe_werkzeug=True)

@@ -437,8 +437,47 @@ class VehicleCounter:
         }
     
     def get_entry_exit_details(self):
-        """Get detailed entry/exit log"""
-        return self.entry_exit_log
+        """Get detailed entry/exit log formatted for table display"""
+        formatted_log = []
+        
+        # Group entries and exits by vehicle ID
+        vehicle_sessions = {}
+        
+        for log_entry in self.entry_exit_log:
+            vehicle_id = log_entry['id']
+            
+            if vehicle_id not in vehicle_sessions:
+                vehicle_sessions[vehicle_id] = {
+                    'vehicle_type': log_entry['vehicle_type'],
+                    'registration_number': f"VH-{vehicle_id:04d}",  # Mock registration number
+                    'entry_time': None,
+                    'exit_time': None,
+                    'duration': None,
+                    'speed': log_entry.get('speed', 0)
+                }
+            
+            if log_entry['direction'] == 'entry':
+                vehicle_sessions[vehicle_id]['entry_time'] = log_entry['entry_time']
+            elif log_entry['direction'] == 'exit':
+                vehicle_sessions[vehicle_id]['exit_time'] = log_entry['exit_time']
+                vehicle_sessions[vehicle_id]['duration'] = log_entry.get('duration', 0)
+        
+        # Convert to list format for table display
+        for vehicle_id, session in vehicle_sessions.items():
+            formatted_log.append({
+                'id': vehicle_id,
+                'vehicle_type': session['vehicle_type'].title(),
+                'registration_number': session['registration_number'],
+                'entry_time': session['entry_time'],
+                'exit_time': session['exit_time'] or 'Still Active',
+                'duration': f"{session['duration']:.1f}s" if session['duration'] else 'Active',
+                'speed': f"{session['speed']:.1f} km/h" if session['speed'] > 0 else 'N/A'
+            })
+        
+        # Sort by entry time (most recent first)
+        formatted_log.sort(key=lambda x: x['entry_time'] or '', reverse=True)
+        
+        return formatted_log[-50:]  # Return last 50 entries
     
     def reset_counts(self):
         """Reset all vehicle counts"""
