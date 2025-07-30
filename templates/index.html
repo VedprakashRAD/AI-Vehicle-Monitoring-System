@@ -328,7 +328,27 @@
         </div>
         
         <div class="export-section">
-            <h3>Data Export</h3>
+            <h3>Vehicle Details & Data Export</h3>
+            <div style="margin-bottom: 20px;">
+                <h4>Recent Vehicle Entries</h4>
+                <div id="vehicleDetailsTable" style="max-height: 300px; overflow-y: auto; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #e9ecef;">
+                                <th style="padding: 8px; border: 1px solid #ddd;">Vehicle ID</th>
+                                <th style="padding: 8px; border: 1px solid #ddd;">Registration No.</th>
+                                <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border: 1px solid #ddd;">Status</th>
+                                <th style="padding: 8px; border: 1px solid #ddd;">Entry Time</th>
+                                <th style="padding: 8px; border: 1px solid #ddd;">Exit Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vehicleTableBody">
+                            <tr><td colspan="6" style="text-align: center; padding: 20px;">No vehicle data available</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <p>Download historical vehicle data for analysis</p>
             <button class="btn btn-primary" onclick="exportData()">Export CSV Data</button>
         </div>
@@ -501,6 +521,34 @@
             });
         }
         
+        function loadVehicleDetails() {
+            fetch('/api/vehicle_details')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('vehicleTableBody');
+                if (data.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">No vehicle data available</td></tr>';
+                    return;
+                }
+                
+                tableBody.innerHTML = data.map(vehicle => {
+                    const statusColor = vehicle.status === 'Entry' ? '#28a745' : 
+                                       vehicle.status === 'Exit' ? '#dc3545' : '#ffc107';
+                    return `
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${vehicle.vehicle_id}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; color: #007bff;">${vehicle.registration_number}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${vehicle.vehicle_type}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; color: ${statusColor}; font-weight: bold;">${vehicle.status}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${vehicle.entry_time}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${vehicle.exit_time || 'N/A'}</td>
+                        </tr>
+                    `;
+                }).join('');
+            })
+            .catch(error => console.error('Error loading vehicle details:', error));
+        }
+        
         // Theme toggle functionality
         let currentTheme = 'light';
         
@@ -556,6 +604,14 @@
             loadSavedTheme(); // Load theme first
             initCharts();
             loadHistoricalData();
+            loadVehicleDetails();
+            
+            // Refresh data every 5 seconds when monitoring
+            setInterval(() => {
+                if (isMonitoring) {
+                    loadVehicleDetails();
+                }
+            }, 5000);
             
             // Refresh historical data every 5 minutes
             setInterval(loadHistoricalData, 300000);

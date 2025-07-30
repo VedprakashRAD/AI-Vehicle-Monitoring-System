@@ -17,7 +17,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from core.vehicle_counter import WebVehicleCounter
+from core.improved_vehicle_detector import ImprovedVehicleDetector
 from database.manager import DatabaseManager
 from utils.system_monitor import system_monitor
 from utils.anomaly_detector import anomaly_detector
@@ -126,7 +126,13 @@ class VehicleDashboard:
         @self.app.route('/api/entry_exit_log')
         def get_entry_exit_log():
             if self.vehicle_counter:
-                return jsonify(self.vehicle_counter.get_entry_exit_details())
+                return jsonify(self.vehicle_counter.entry_exit_log)
+            return jsonify([])
+        
+        @self.app.route('/api/vehicle_details')
+        def get_vehicle_details():
+            if self.vehicle_counter:
+                return jsonify(self.vehicle_counter.get_vehicle_details())
             return jsonify([])
 
         @self.app.route('/start_monitoring', methods=['POST'])
@@ -137,7 +143,7 @@ class VehicleDashboard:
                 self.camera_source = source  # Set camera source
                 confidence = float(data.get('confidence', 0.5))
                 
-                self.vehicle_counter = WebVehicleCounter(confidence_threshold=confidence)
+                self.vehicle_counter = ImprovedVehicleDetector(confidence_threshold=confidence)
                 self.is_processing = True
                 
                 logger.info(f"Started monitoring with source: {source}, confidence: {confidence}")
@@ -179,78 +185,106 @@ class VehicleDashboard:
         """Generate video frames for streaming"""
         logger.info("🔍 Starting video feed generation...")
         
-        # Show placeholder until monitoring starts
-        while not self.is_processing:
-            placeholder = self._create_placeholder_frame()
-            _, buffer = cv2.imencode('.jpg', placeholder)
-            frame_bytes = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-            time.sleep(0.5)
+        cap = None
         
-        # Start camera processing
-        logger.info("🎬 Opening camera for monitoring...")
-        cap = cv2.VideoCapture(self.camera_source if str(self.camera_source).isdigit() else self.camera_source)
-        if not cap.isOpened():
-            # Try to open test video if camera fails
-            cap = cv2.VideoCapture("test_video.mp4")
-        
-        if not cap.isOpened():
-            logger.error("❌ Failed to open camera")
-            while self.is_processing:
-                error_frame = self._create_error_frame("Camera not accessible")
-                _, buffer = cv2.imencode('.jpg', error_frame)
+        while True:
+            if not self.is_processing:
+                # Show placeholder when not monitoring
+                placeholder = self._create_placeholder_frame()
+                _, buffer = cv2.imencode('.jpg', placeholder)
                 frame_bytes = buffer.tobytes()
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-                time.sleep(1)
-            return
-        
-        logger.info("✅ Camera opened successfully")
-        
-        try:
-            while self.is_processing:
+                time.sleep(0.5)
+                continue
+            
+            # Initialize camera when monitoring starts
+            if cap is None:
+                logger.info("🎬 Opening camera for monitoring...")
+                # Try different camera indices
+                for camera_idx in [0, 1, 2]:
+                    cap = cv2.VideoCapture(camera_idx)
+                    if cap.isOpened():
+                        logger.info(f"✅ Camera {camera_idx} opened successfully")
+                        # Set camera properties for better performance
+                        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+                        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+                        cap.set(cv2.CAP_PROP_FPS, 30)
+                        break
+                    cap.release()
+                    cap = None
+                
+                # If no camera found, try test video
+                if cap is None:
+                    logger.info("📹 Trying test video...")
+                    cap = cv2.VideoCapture("test_video.mp4")
+                    if cap.isOpened():
+                        logger.info("✅ Test video opened successfully")
+                
+                # If still no source, create demo frames
+                if cap is None or not cap.isOpened():
+                    logger.warning("⚠️ No camera or video source available, using demo mode")
+                    cap = None
+            
+            # Generate frames
+            if cap is not None and cap.isOpened():
                 ret, frame = cap.read()
                 if not ret:
-                    logger.warning("⚠️ Failed to read frame from camera")
+                    logger.warning("⚠️ Failed to read frame, releasing camera")
+                    cap.release()
+                    cap = None
                     continue
                 
                 # Process frame with AI detection
                 if self.vehicle_counter is not None:
                     try:
                         processed_frame, stats = self.vehicle_counter.process_frame_for_web(frame)
-                        
-                        # Update anomaly detector with latest stats
-                        anomaly_detector.update_traffic_data(stats)
-                        
-                        # Add anomaly data to stats
-                        stats['anomalies'] = json.loads(json.dumps({
-                            'active': anomaly_detector.get_active_anomalies(),
-                            'summary': anomaly_detector.get_anomaly_summary()
-                        }, default=json_serializer))
-                        
                         self.socketio.emit('stats_update', stats)
                     except Exception as e:
                         logger.error(f"❌ Error processing frame: {e}")
-                        processed_frame = frame
+                        processed_frame = frame.copy()
+                        cv2.putText(processed_frame, "Processing Error", 
+                                   (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
                 else:
                     processed_frame = frame.copy()
-                    cv2.putText(processed_frame, "AI Detection Active",
+                    cv2.putText(processed_frame, "Live Camera Feed", 
                                (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                 
-                _, buffer = cv2.imencode('.jpg', processed_frame, [cv2.IMWRITE_JPEG_QUALITY, 80])
-                frame_bytes = buffer.tobytes()
+            else:
+                # Demo mode - create synthetic frame
+                processed_frame = np.zeros((480, 640, 3), dtype=np.uint8)
+                processed_frame[:] = (40, 60, 80)
+                cv2.putText(processed_frame, "DEMO MODE - No Camera Detected", 
+                           (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+                cv2.putText(processed_frame, "AI Vehicle Detection Active", 
+                           (50, 250), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+                cv2.putText(processed_frame, f"Time: {datetime.now().strftime('%H:%M:%S')}", 
+                           (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
                 
+                # Generate demo stats
+                if self.vehicle_counter is not None:
+                    try:
+                        _, stats = self.vehicle_counter.process_frame_for_web(processed_frame)
+                        self.socketio.emit('stats_update', stats)
+                    except Exception as e:
+                        logger.error(f"❌ Error in demo processing: {e}")
+            
+            # Encode and yield frame
+            try:
+                _, buffer = cv2.imencode('.jpg', processed_frame, [cv2.IMWRITE_JPEG_QUALITY, 85])
+                frame_bytes = buffer.tobytes()
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-                
-                time.sleep(0.033)  # ~30 FPS
-                
-        except Exception as e:
-            logger.error(f"❌ Error in frame generation: {e}")
-        finally:
-            cap.release()
-            logger.info("📹 Camera released")
+            except Exception as e:
+                logger.error(f"❌ Error encoding frame: {e}")
+            
+            time.sleep(0.033)  # ~30 FPS
+            
+            # Clean up when monitoring stops
+            if not self.is_processing and cap is not None:
+                cap.release()
+                cap = None
+                logger.info("📹 Camera released")
     
     def _create_placeholder_frame(self):
         """Create a placeholder frame when no monitoring is active"""
