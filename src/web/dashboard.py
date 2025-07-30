@@ -67,15 +67,7 @@ class VehicleDashboard:
         
         @self.app.route('/')
         def index():
-            return render_template('world_class_advanced.html')
-        
-        @self.app.route('/world-class')
-        def world_class():
-            return render_template('world_class_advanced.html')
-        
-        @self.app.route('/simple')
-        def simple():
-            return render_template('simple_advanced.html')
+            return render_template('index.html')
         
         @self.app.route('/api/stats')
         def get_stats():
