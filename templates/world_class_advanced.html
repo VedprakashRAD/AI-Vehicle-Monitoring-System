@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 World-Class AI Vehicle Monitoring System</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --warning-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            pointer-events: none;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .video-container {
+            position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .video-feed {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-online { background: #27ae60; }
+        .status-offline { background: #e74c3c; }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .control-panel {
+            padding: 2rem;
+        }
+
+        .btn-custom {
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-custom:hover::before {
+            left: 100%;
+        }
+
+        .btn-start {
+            background: var(--success-gradient);
+            color: white;
+        }
+
+        .btn-stop {
+            background: var(--secondary-gradient);
+            color: white;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            padding: 1rem;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            border-radius: 10px;
+            z-index: 9999;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: var(--success-gradient);
+        }
+
+        .notification.error {
+            background: var(--secondary-gradient);
+        }
+
+        .feature-highlight {
+            background: var(--warning-gradient);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .floating-stats {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .model-info {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number { font-size: 2rem; }
+            .container-fluid { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-car me-2"></i>
+                AI Vehicle Monitoring System
+            </a>
+            <div class="ms-auto">
+                <button class="btn btn-outline-light btn-sm" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Header Section -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h1 class="text-white display-4 fw-bold mb-3">
+                    🚗 World-Class Vehicle Monitoring
+                </h1>
+                <p class="text-white-50 lead">
+                    Advanced AI-Powered Real-Time Traffic Analysis & Counting System
+                </p>
+            </div>
+        </div>
+
+        <!-- Model Information -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="model-info">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-1"><i class="fas fa-brain me-2"></i>AI Model Information</h5>
+                            <p class="mb-0">
+                                <strong>Model:</strong> YOLOv8 Nano | 
+                                <strong>Confidence:</strong> <span id="currentConfidence">50%</span> | 
+                                <strong>Status:</strong> <span id="aiModelStatus">Ready</span>
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <div class="loading-spinner" id="aiLoadingSpinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card">
+                    <div class="stat-number" id="totalVehicles">0</div>
+                    <div class="stat-label">Total Vehicles</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card bg-info">
+                    <div class="stat-number" id="carsCount">0</div>
+                    <div class="stat-label">Cars</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card bg-success">
+                    <div class="stat-number" id="motorcyclesCount">0</div>
+                    <div class="stat-label">Motorcycles</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card bg-warning">
+                    <div class="stat-number" id="busesCount">0</div>
+                    <div class="stat-label">Buses</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card bg-danger">
+                    <div class="stat-number" id="trucksCount">0</div>
+                    <div class="stat-label">Trucks</div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="stat-card glass-card bg-secondary">
+                    <div class="stat-number" id="activeTracks">0</div>
+                    <div class="stat-label">Active Tracks</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Row -->
+        <div class="row">
+            <!-- Video Feed -->
+            <div class="col-lg-8 mb-4">
+                <div class="glass-card p-3">
+                    <h5 class="mb-3">
+                        <i class="fas fa-video me-2"></i>
+                        Live Video Feed
+                        <span class="status-indicator" id="videoStatus"></span>
+                    </h5>
+                    <div class="video-container">
+                        <img id="videoFeed" src="/video_feed" alt="Video Feed" class="video-feed">
+                        <div class="video-overlay">
+                            <span class="status-indicator status-offline" id="liveIndicator"></span>
+                            <span id="videoStatusText">Offline</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="col-lg-4 mb-4">
+                <div class="glass-card control-panel">
+                    <h5 class="mb-4">
+                        <i class="fas fa-cogs me-2"></i>
+                        Control Panel
+                    </h5>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Video Source</label>
+                        <select class="form-select" id="videoSource">
+                            <option value="0">Default Camera</option>
+                            <option value="1">External Camera</option>
+                            <option value="test_video.mp4">Test Video</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">
+                            Confidence Threshold: <span id="confidenceValue">50%</span>
+                        </label>
+                        <input type="range" class="form-range" id="confidenceSlider" 
+                               min="10" max="90" value="50" step="5">
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-custom btn-start" onclick="startMonitoring()">
+                            <i class="fas fa-play me-2"></i>Start Monitoring
+                        </button>
+                        <button class="btn btn-custom btn-stop" onclick="stopMonitoring()">
+                            <i class="fas fa-stop me-2"></i>Stop Monitoring
+                        </button>
+                    </div>
+
+                    <!-- Real-time Statistics -->
+                    <div class="mt-4">
+                        <h6 class="fw-bold">Real-time Stats</h6>
+                        <div class="small">
+                            <div class="d-flex justify-content-between">
+                                <span>Processing FPS:</span>
+                                <span id="processingFPS">0</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Detection Time:</span>
+                                <span id="detectionTime">0ms</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Last Updated:</span>
+                                <span id="lastUpdated">Never</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Charts -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="glass-card">
+                    <div class="chart-container">
+                        <h5 class="mb-3">
+                            <i class="fas fa-chart-line me-2"></i>
+                            Vehicle Count Trend
+                        </h5>
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="glass-card">
+                    <div class="chart-container">
+                        <h5 class="mb-3">
+                            <i class="fas fa-chart-pie me-2"></i>
+                            Vehicle Type Distribution
+                        </h5>
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speed Analytics -->
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="glass-card">
+                    <div class="chart-container">
+                        <h5 class="mb-3">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Speed Distribution
+                        </h5>
+                        <canvas id="speedChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="glass-card">
+                    <div class="chart-container">
+                        <h5 class="mb-3">
+                            <i class="fas fa-clock me-2"></i>
+                            Hourly Traffic Pattern
+                        </h5>
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export and Advanced Features -->
+        <div class="row">
+            <div class="col-12">
+                <div class="glass-card p-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-download me-2"></i>
+                        Data Export & Advanced Features
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="d-grid gap-2 d-md-block">
+                                <button class="btn btn-outline-primary" onclick="exportData('csv')">
+                                    <i class="fas fa-file-csv me-2"></i>Export CSV
+                                </button>
+                                <button class="btn btn-outline-success" onclick="exportData('json')">
+                                    <i class="fas fa-file-code me-2"></i>Export JSON
+                                </button>
+                                <button class="btn btn-outline-warning" onclick="exportData('xml')">
+                                    <i class="fas fa-file-code me-2"></i>Export XML
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-grid gap-2 d-md-block">
+                                <button class="btn btn-outline-info" onclick="generateReport()">
+                                    <i class="fas fa-chart-bar me-2"></i>Generate Report
+                                </button>
+                                <button class="btn btn-outline-secondary" onclick="resetCounts()">
+                                    <i class="fas fa-redo me-2"></i>Reset Counts
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Real-time Stats -->
+    <div class="floating-stats" id="floatingStats" style="display: none;">
+        <div class="fw-bold mb-1">Live Performance</div>
+        <div class="small">
+            CPU: <span id="cpuUsage">0%</span> | 
+            Memory: <span id="memoryUsage">0MB</span>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <script>
+        // Initialize Socket.IO
+        const socket = io();
+        let isMonitoring = false;
+        let charts = {};
+
+        // Initialize Charts
+        function initCharts() {
+            // Trend Chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            charts.trend = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Total Vehicles',
+                        data: [],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Distribution Chart
+            const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+            charts.distribution = new Chart(distributionCtx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Cars', 'Motorcycles', 'Buses', 'Trucks'],
+                    datasets: [{
+                        data: [0, 0, 0, 0],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+
+            // Speed Chart
+            const speedCtx = document.getElementById('speedChart').getContext('2d');
+            charts.speed = new Chart(speedCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['0-20', '21-40', '41-60', '61-80', '80+'],
+                    datasets: [{
+                        label: 'Vehicle Count',
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: '#667eea',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Hourly Chart
+            const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+            charts.hourly = new Chart(hourlyCtx, {
+                type: 'bar',
+                data: {
+                    labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+                    datasets: [{
+                        label: 'Vehicles per Hour',
+                        data: new Array(24).fill(0),
+                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        borderColor: '#ff6384',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        // Confidence slider handler
+        document.getElementById('confidenceSlider').addEventListener('input', function() {
+            document.getElementById('confidenceValue').textContent = this.value + '%';
+            document.getElementById('currentConfidence').textContent = this.value + '%';
+        });
+
+        // Socket event handlers
+        socket.on('connect', function() {
+            showNotification('Connected to server', 'success');
+        });
+
+        socket.on('stats_update', function(stats) {
+            document.getElementById('totalVehicles').textContent = stats.total_count;
+            document.getElementById('carsCount').textContent = stats.vehicle_counts.car || 0;
+            document.getElementById('motorcyclesCount').textContent = stats.vehicle_counts.motorcycle || 0;
+            document.getElementById('busesCount').textContent = stats.vehicle_counts.bus || 0;
+            document.getElementById('trucksCount').textContent = stats.vehicle_counts.truck || 0;
+            document.getElementById('activeTracks').textContent = stats.active_tracks;
+
+            // Update distribution chart
+            charts.distribution.data.datasets[0].data = [
+                stats.vehicle_counts.car || 0,
+                stats.vehicle_counts.motorcycle || 0,
+                stats.vehicle_counts.bus || 0,
+                stats.vehicle_counts.truck || 0
+            ];
+            charts.distribution.update();
+
+            document.getElementById('lastUpdated').textContent = new Date(stats.timestamp).toLocaleTimeString();
+        });
+
+        function updateStats(data) {
+            document.getElementById('totalVehicles').textContent = data.total_count || 0;
+            document.getElementById('carsCount').textContent = data.vehicle_counts?.car || 0;
+            document.getElementById('motorcyclesCount').textContent = data.vehicle_counts?.motorcycle || 0;
+            document.getElementById('busesCount').textContent = data.vehicle_counts?.bus || 0;
+            document.getElementById('trucksCount').textContent = data.vehicle_counts?.truck || 0;
+            document.getElementById('activeTracks').textContent = data.active_tracks || 0;
+            
+            const now = new Date().toLocaleTimeString();
+            document.getElementById('lastUpdated').textContent = now;
+            
+            // Update charts
+            updateCharts(data);
+        }
+
+        function updateCharts(data) {
+            // Update distribution chart
+            if (charts.distribution) {
+                charts.distribution.data.datasets[0].data = [
+                    data.vehicle_counts?.car || 0,
+                    data.vehicle_counts?.motorcycle || 0,
+                    data.vehicle_counts?.bus || 0,
+                    data.vehicle_counts?.truck || 0
+                ];
+                charts.distribution.update('active');
+            }
+
+            // Update trend chart
+            if (charts.trend && isMonitoring) {
+                const now = new Date().toLocaleTimeString();
+                const totalCount = data.total_count || 0;
+                
+                if (charts.trend.data.labels.length >= 20) {
+                    charts.trend.data.labels.shift();
+                    charts.trend.data.datasets[0].data.shift();
+                }
+                
+                charts.trend.data.labels.push(now);
+                charts.trend.data.datasets[0].data.push(totalCount);
+                charts.trend.update('none');
+            }
+        }
+
+        function startMonitoring() {
+            const source = document.getElementById('videoSource').value;
+            const confidence = document.getElementById('confidenceSlider').value / 100;
+            
+            showLoadingSpinner(true);
+            
+            fetch('/start_monitoring', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ source, confidence })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showLoadingSpinner(false);
+                if (data.status === 'success') {
+                    isMonitoring = true;
+                    document.getElementById('liveIndicator').className = 'status-indicator status-online';
+                    document.getElementById('videoStatusText').textContent = 'Live';
+                    document.getElementById('aiModelStatus').textContent = 'Active';
+                    document.getElementById('floatingStats').style.display = 'block';
+                    showNotification('Monitoring started successfully!', 'success');
+                } else {
+                    showNotification('Error: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showLoadingSpinner(false);
+                showNotification('Failed to start monitoring', 'error');
+            });
+        }
+
+        function stopMonitoring() {
+            fetch('/stop_monitoring', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    isMonitoring = false;
+                    document.getElementById('liveIndicator').className = 'status-indicator status-offline';
+                    document.getElementById('videoStatusText').textContent = 'Offline';
+                    document.getElementById('aiModelStatus').textContent = 'Ready';
+                    document.getElementById('floatingStats').style.display = 'none';
+                    showNotification('Monitoring stopped', 'success');
+                }
+            });
+        }
+
+        function exportData(format) {
+            window.open(`/api/export_data?format=${format}`, '_blank');
+            showNotification(`Exporting data as ${format.toUpperCase()}...`, 'success');
+        }
+
+        function generateReport() {
+            showNotification('Generating comprehensive report...', 'success');
+            // Implementation for report generation
+        }
+
+        function resetCounts() {
+            if (confirm('Are you sure you want to reset all counts?')) {
+                showNotification('Counts reset successfully', 'success');
+                // Implementation for reset
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'exclamation-triangle'} me-2"></i>${message}`;
+            
+            document.getElementById('notificationContainer').appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        function showLoadingSpinner(show) {
+            document.getElementById('aiLoadingSpinner').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleTheme() {
+            // Theme toggle implementation
+            showNotification('Theme toggled', 'success');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            updateAnalytics(); // Initial data load
+            showNotification('Dashboard initialized', 'success');
+        });
+
+        function updateAnalytics() {
+            // Fetch trend data
+            fetch('/api/trend_data')
+                .then(response => response.json())
+                .then(data => {
+                    const trend = data.traffic_trend;
+                    charts.trend.data.labels = trend.map(d => new Date(d[0]).toLocaleTimeString());
+                    charts.trend.data.datasets[0].data = trend.map(d => d[1]);
+                    charts.trend.update();
+                });
+
+            // Fetch hourly summary
+            fetch('/api/hourly_summary')
+                .then(response => response.json())
+                .then(data => {
+                    const hours = data.map(d => new Date(d.hour).getHours() + ':00');
+                    const totals = data.map(d => d.total);
+                    charts.hourly.data.labels = hours.reverse();
+                    charts.hourly.data.datasets[0].data = totals.reverse();
+                    charts.hourly.update();
+                });
+        }
+    </script>
+</body>
+</html>

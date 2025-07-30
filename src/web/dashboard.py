@@ -25,10 +25,11 @@ logger = logging.getLogger(__name__)
 class VehicleDashboard:
     """Main dashboard application class"""
     
-    def __init__(self, host='0.0.0.0', port=8080, debug=True):
+    def __init__(self, host='0.0.0.0', port=8080, debug=True, config=None):
         self.host = host
         self.port = port
         self.debug = debug
+        self.config = config or {}
         
         # Initialize Flask app
         self.app = Flask(__name__, 
@@ -55,7 +56,18 @@ class VehicleDashboard:
         
         @self.app.route('/')
         def index():
+            # Check if config indicates to use world-class template
+            if self.config.get('dashboard', {}).get('use_world_class', False):
+                return render_template('world_class_advanced.html')
             return render_template('index.html')
+        
+        @self.app.route('/world-class')
+        def world_class():
+            return render_template('world_class_advanced.html')
+        
+        @self.app.route('/simple')
+        def simple():
+            return render_template('simple_advanced.html')
         
         @self.app.route('/api/stats')
         def get_stats():
